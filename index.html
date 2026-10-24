@@ -32,6 +32,11 @@ header h1{font-family:var(--font-display);font-size:clamp(26px,4vw,38px);line-he
 header p{margin:0;color:var(--muted);max-width:68ch}
 .legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font-size:13px;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
+.bkey{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.bkey summary{cursor:pointer;color:var(--ink)}
+.bkey ol{list-style:none;margin:10px 0 2px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:4px 18px;color:var(--muted);font-size:13.5px}
+.bkey li{display:flex;gap:8px}
+.bkey li b{flex:0 0 2.4em;color:var(--way);font-variant-numeric:tabular-nums}
 .sw{width:12px;height:12px;border-radius:3px;display:inline-block}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin-top:20px;padding-block:8px;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto}
@@ -79,9 +84,9 @@ td.k{font-weight:700}
 .why b{display:block;margin-bottom:2px}
 @media (prefers-reduced-motion:no-preference){.node rect{transition:stroke-width .15s}}
 </style>
-
 </head>
 <body>
+
 <div class="wrap">
 <header>
   <h1>Bản đồ ôn tập Chánh Kiến Học Hiểu Hành K32</h1>
@@ -92,6 +97,23 @@ td.k{font-weight:700}
     <span><i class="sw" style="background:var(--goc)"></i>3 Gốc – nội lực, hạnh phúc</span>
     <span><i class="sw" style="background:var(--doc)"></i>3 Độc – gốc khổ</span>
   </div>
+  <details class="bkey" open>
+    <summary><b>Cách đọc nhãn:</b> B1, B2, B3 … B12 nghĩa là <b>Bài 1, Bài 2, Bài 3 … Bài 12</b> của khóa. Ví dụ “B4, B7” = nội dung nằm ở Bài 4 và Bài 7.</summary>
+    <ol>
+      <li><b>B1</b> Bài 1 · Khai giảng – Tâm thế đúng đắn</li>
+      <li><b>B2</b> Bài 2 · Tư duy nhân quả – Ý nghĩa cuộc đời</li>
+      <li><b>B3</b> Bài 3 · Môi trường sống lý tưởng – Tam Bảo</li>
+      <li><b>B4</b> Bài 4 · Cội nguồn khổ đau – 3 Độc</li>
+      <li><b>B5</b> Bài 5 · Cội nguồn hạnh phúc – 3 Gốc</li>
+      <li><b>B6</b> Bài 6 · Kỹ năng vua – Tiến trình chuyển hóa</li>
+      <li><b>B7</b> Bài 7 · Sơ đồ Thân–Tâm – Bản ngã</li>
+      <li><b>B8</b> Bài 8 · 4 cách giúp người</li>
+      <li><b>B9</b> Bài 9 · 4 vòng tròn đào tạo</li>
+      <li><b>B10</b> Bài 10 · Bát Chánh Đạo – 8 chìa khóa vạn năng</li>
+      <li><b>B11</b> Bài 11 · Tứ Diệu Đế · Như lý tác ý · Nghiệp</li>
+      <li><b>B12</b> Bài 12 · Bế giảng – Sống cùng Chánh Kiến</li>
+    </ol>
+  </details>
 </header>
 
 <nav role="tablist" aria-label="Các sơ đồ">
