@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Bản đồ CK3H K32</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: một cột đọc rộng ~1040px, thanh tab dính đầu trang, mỗi tab là một sơ đồ lớn kèm chú giải */
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --ink:#1f2a26; --muted:#5d6b65; --line:#cfd8d3;
+  --doc:#b5452f; --doc-soft:#f6e3de;      /* 3 độc */
+  --goc:#2f7d5b; --goc-soft:#e0efe7;      /* 3 gốc */
+  --bao:#a8741c; --bao-soft:#f5ead3;      /* 3 bảo */
+  --way:#3a5f9e; --way-soft:#e2e9f5;      /* chuyển hóa / phương pháp */
+  --font-display:"Literata", Georgia, "Times New Roman", serif;
+  --font-body:"Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131917; --surface:#1b2320; --ink:#e7ece9; --muted:#9db0a8; --line:#33413b;
+  --doc:#e9826b; --doc-soft:#3a2420; --goc:#6cc69a; --goc-soft:#1c3328; --bao:#e0b45e; --bao-soft:#352a14;
+  --way:#8aaee8; --way-soft:#1d2a40; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131917; --surface:#1b2320; --ink:#e7ece9; --muted:#9db0a8; --line:#33413b;
+  --doc:#e9826b; --doc-soft:#3a2420; --goc:#6cc69a; --goc-soft:#1c3328; --bao:#e0b45e; --bao-soft:#352a14;
+  --way:#8aaee8; --way-soft:#1d2a40; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+header h1{font-family:var(--font-display);font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 6px;text-wrap:balance}
+header p{margin:0;color:var(--muted);max-width:68ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin-top:20px;padding-block:8px;border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto}
+nav button{font:600 14px var(--font-body);color:var(--muted);background:none;border:1px solid transparent;border-radius:999px;padding:7px 14px;cursor:pointer;white-space:nowrap}
+nav button[aria-selected="true"]{color:var(--ink);background:var(--surface);border-color:var(--line)}
+nav button:focus-visible,.chip:focus-visible,.lesson-pick button:focus-visible{outline:2px solid var(--way);outline-offset:2px}
+section.panel{padding-top:22px}
+h2{font-family:var(--font-display);font-size:24px;margin:0 0 4px;text-wrap:balance}
+.lead{color:var(--muted);margin:0 0 16px;max-width:72ch}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;overflow-x:auto}
+.fig svg{display:block;width:100%;min-width:720px;height:auto}
+.fig.flow svg{max-width:900px;margin:0 auto}
+.fig.mind svg{min-width:980px}
+.fig svg text{font-family:var(--font-body)}
+.note{font-size:13.5px;color:var(--muted);margin:10px 2px 0}
+.tag{font:600 11px var(--font-body);letter-spacing:.04em;text-transform:uppercase}
+/* detail panel */
+.detail{margin-top:14px;border-left:3px solid var(--way);padding:10px 14px;background:var(--surface);border-radius:0 10px 10px 0;min-height:56px}
+.detail b{display:block;font-family:var(--font-display);font-size:17px}
+.node{cursor:pointer}
+.node:focus{outline:none}
+.node:focus-visible rect,.node:hover rect{stroke-width:2.4}
+/* table */
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:700}
+.doc-c{color:var(--doc)} .goc-c{color:var(--goc)} .bao-c{color:var(--bao)} .way-c{color:var(--way)}
+/* lessons */
+.lesson-pick{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.lesson-pick button{font:600 13px var(--font-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;font-variant-numeric:tabular-nums}
+.lesson-pick button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lesson{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:820px){.lesson{grid-template-columns:1fr}}
+.lesson .fig svg{min-width:520px}
+.lesson h3{font-family:var(--font-display);font-size:21px;margin:0 0 6px;text-wrap:balance}
+.lesson .one{font-weight:600;margin:0 0 10px}
+.lesson ul{margin:0;padding-left:18px}
+.lesson li{margin-bottom:6px}
+.quote{margin-top:12px;font-family:var(--font-display);font-style:italic;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:6px}
+.why div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.why b{display:block;margin-bottom:2px}
+@media (prefers-reduced-motion:no-preference){.node rect{transition:stroke-width .15s}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Bản đồ ôn tập Chánh Kiến Học Hiểu Hành K32</h1>
+  <p>Bảy sơ đồ cho thấy 12 bài nối với nhau thế nào: từ môi trường nuôi tâm, qua phương pháp chuyển hóa, đến nội lực và cuộc đời ý nghĩa. Bấm vào từng khối để xem nó thuộc bài nào.</p>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--bao)"></i>3 Bảo – môi trường</span>
+    <span><i class="sw" style="background:var(--way)"></i>Chuyển hóa – phương pháp</span>
+    <span><i class="sw" style="background:var(--goc)"></i>3 Gốc – nội lực, hạnh phúc</span>
+    <span><i class="sw" style="background:var(--doc)"></i>3 Độc – gốc khổ</span>
+  </div>
+</header>
+
+<nav role="tablist" aria-label="Các sơ đồ">
+  <button role="tab" id="t-map" aria-selected="true" aria-controls="p-map">1 · Bản đồ toàn khóa</button>
+  <button role="tab" id="t-path" aria-selected="false" aria-controls="p-path">2 · Lộ trình 12 bài</button>
+  <button role="tab" id="t-body" aria-selected="false" aria-controls="p-body">3 · Sơ đồ Thân–Tâm</button>
+  <button role="tab" id="t-grid" aria-selected="false" aria-controls="p-grid">4 · Bảng đối chiếu</button>
+  <button role="tab" id="t-each" aria-selected="false" aria-controls="p-each">5 · Sơ đồ từng bài</button>
+  <button role="tab" id="t-flow" aria-selected="false" aria-controls="p-flow">6 · Gặp chuyện thì làm gì</button>
+  <button role="tab" id="t-mind" aria-selected="false" aria-controls="p-mind">7 · Sơ đồ tư duy</button>
+</nav>
+
+<!-- 1 CONCEPT MAP -->
+<section class="panel" id="p-map" role="tabpanel" aria-labelledby="t-map">
+  <h2>Nuôi tâm bằng 3 Bảo, tiêu hóa bằng chuyển hóa, lớn lên thành 3 Gốc</h2>
+  <p class="lead">Đọc từ trái sang phải. Dải trên là cái nền (chánh kiến, tâm thế); dải dưới là thứ phải nhổ bỏ (3 độc). Bấm khối bất kỳ để xem chi tiết.</p>
+  <div class="fig">
+  <svg viewBox="0 0 1000 640" role="img" aria-label="Bản đồ toàn khóa: 3 Bảo, chuyển hóa, 3 Gốc, cuộc đời ý nghĩa">
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker>
+      <marker id="ar-doc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--doc)"/></marker>
+    </defs>
+    <!-- top band -->
+    <g class="node" tabindex="0" data-k="chanhkien">
+      <rect x="20" y="16" width="960" height="58" rx="10" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.3"/>
+      <text x="500" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">CHÁNH KIẾN: nhìn đúng sự thật trên tiến trình Nhân + Duyên ⇒ Quả</text>
+      <text x="500" y="61" text-anchor="middle" font-size="12.5" fill="var(--muted)">Tâm thế: khiêm hạ · nhận lỗi sửa mình · chủ động gieo nhân mới  ·  B1, B2</text>
+    </g>
+    <!-- column headers -->
+    <text x="120" y="100" text-anchor="middle" class="tag" fill="var(--bao)">MÔI TRƯỜNG · B3</text>
+    <text x="370" y="100" text-anchor="middle" class="tag" fill="var(--way)">CHUYỂN HÓA · B4 B6 B10 B11</text>
+    <text x="625" y="100" text-anchor="middle" class="tag" fill="var(--goc)">NỘI LỰC · B5</text>
+    <text x="865" y="100" text-anchor="middle" class="tag" fill="var(--ink)">CUỘC ĐỜI · B8 B9 B12</text>
+
+    <!-- 3 bao -->
+    <g class="node" tabindex="0" data-k="thay"><rect x="30" y="124" width="180" height="62" rx="9" fill="var(--bao-soft)" stroke="var(--bao)" stroke-width="1.3"/><text x="120" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Thầy hiền trí</text><text x="120" y="170" text-anchor="middle" font-size="12" fill="var(--muted)">trao bản đồ · 2–3 lần/năm</text></g>
+    <g class="node" tabindex="0" data-k="sach"><rect x="30" y="200" width="180" height="62" rx="9" fill="var(--bao-soft)" stroke="var(--bao)" stroke-width="1.3"/><text x="120" y="226" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Sách tinh hoa</text><text x="120" y="246" text-anchor="middle" font-size="12" fill="var(--muted)">thức ăn tâm · mỗi ngày</text></g>
+    <g class="node" tabindex="0" data-k="ban"><rect x="30" y="276" width="180" height="62" rx="9" fill="var(--bao-soft)" stroke="var(--bao)" stroke-width="1.3"/><text x="120" y="302" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Nhóm bạn tốt</text><text x="120" y="322" text-anchor="middle" font-size="12" fill="var(--muted)">duy trì thói quen</text></g>
+    <text x="120" y="362" text-anchor="middle" font-size="12" fill="var(--muted)">= thức ăn của tâm</text>
+
+    <!-- chuyen hoa -->
+    <g class="node" tabindex="0" data-k="vtt"><rect x="260" y="124" width="220" height="56" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.3"/><text x="370" y="148" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Văn – Tư – Tu</text><text x="370" y="167" text-anchor="middle" font-size="12" fill="var(--muted)">Học 10 · Hiểu 20 · Hành 70</text></g>
+    <g class="node" tabindex="0" data-k="qspt"><rect x="260" y="190" width="220" height="56" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.3"/><text x="370" y="214" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Quan sát–Phân tích–Đúc kết</text><text x="370" y="233" text-anchor="middle" font-size="12" fill="var(--muted)">kỹ năng vua · tự học sâu</text></g>
+    <g class="node" tabindex="0" data-k="niem"><rect x="260" y="256" width="220" height="56" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.3"/><text x="370" y="280" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Tâm quan sát · Chánh niệm</text><text x="370" y="299" text-anchor="middle" font-size="12" fill="var(--muted)">dừng 10 giây · thiền Vipassana</text></g>
+    <g class="node" tabindex="0" data-k="tacy"><rect x="260" y="322" width="220" height="56" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.3"/><text x="370" y="346" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Như lý tác ý + Tạo phước</text><text x="370" y="365" text-anchor="middle" font-size="12" fill="var(--muted)">gieo nhân mới mỗi ngày</text></g>
+    <g class="node" tabindex="0" data-k="kho"><rect x="260" y="388" width="220" height="44" rx="9" fill="none" stroke="var(--way)" stroke-width="1.3" stroke-dasharray="4 3"/><text x="370" y="415" text-anchor="middle" font-size="13" fill="var(--ink)">Khó khăn, va chạm đủ lớn</text></g>
+
+    <!-- 3 goc triangle -->
+    <g class="node" tabindex="0" data-k="goc">
+      <polygon points="625,148 735,330 515,330" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.5"/>
+      <text x="625" y="262" text-anchor="middle" font-size="15" font-weight="700" fill="var(--goc)">3 GỐC</text>
+      <text x="625" y="282" text-anchor="middle" font-size="12" fill="var(--muted)">Giới · Định · Tuệ</text>
+      <text x="625" y="138" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">Trí tuệ</text>
+      <text x="518" y="352" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">Đạo đức</text>
+      <text x="732" y="352" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">Nghị lực</text>
+      <text x="625" y="384" text-anchor="middle" font-size="12" fill="var(--muted)">phước vô lậu: càng cho càng lớn</text>
+    </g>
+
+    <!-- cuoc doi -->
+    <g class="node" tabindex="0" data-k="ynghia"><rect x="780" y="124" width="190" height="70" rx="9" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.3"/><text x="875" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Cuộc đời ý nghĩa</text><text x="875" y="170" text-anchor="middle" font-size="12" fill="var(--muted)">= Rèn mình + Cống hiến</text><text x="875" y="186" text-anchor="middle" font-size="11.5" fill="var(--muted)">B2</text></g>
+    <g class="node" tabindex="0" data-k="vtdt"><rect x="780" y="206" width="190" height="70" rx="9" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.3"/><text x="875" y="232" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Sợi chỉ đỏ, sứ mệnh</text><text x="875" y="252" text-anchor="middle" font-size="12" fill="var(--muted)">4 vòng tròn, đi từ lõi ra</text><text x="875" y="268" text-anchor="middle" font-size="11.5" fill="var(--muted)">B9</text></g>
+    <g class="node" tabindex="0" data-k="giup"><rect x="780" y="288" width="190" height="70" rx="9" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.3"/><text x="875" y="314" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Giúp người đúng cách</text><text x="875" y="334" text-anchor="middle" font-size="12" fill="var(--muted)">bánh mì kẹp giáo dục</text><text x="875" y="350" text-anchor="middle" font-size="11.5" fill="var(--muted)">B8</text></g>
+    <g class="node" tabindex="0" data-k="toi"><rect x="780" y="370" width="190" height="62" rx="9" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.3"/><text x="875" y="396" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Cái tôi nhỏ → vô ngã</text><text x="875" y="416" text-anchor="middle" font-size="12" fill="var(--muted)">B7 · B11 Diệt đế</text></g>
+
+    <!-- arrows main -->
+    <g fill="none" stroke="var(--muted)" stroke-width="1.3">
+      <path d="M210 231H256" marker-end="url(#ar)"/>
+      <path d="M480 245H560" marker-end="url(#ar)"/>
+      <path d="M708 245H776" marker-end="url(#ar)"/>
+    </g>
+    <text x="233" y="223" text-anchor="middle" font-size="11.5" fill="var(--muted)">nạp</text>
+    <text x="504" y="237" text-anchor="middle" font-size="11.5" fill="var(--muted)">tiêu hóa</text>
+    <text x="742" y="237" text-anchor="middle" font-size="11.5" fill="var(--muted)">trổ quả</text>
+
+    <!-- 3 doc band -->
+    <g class="node" tabindex="0" data-k="doc">
+      <rect x="20" y="470" width="960" height="96" rx="10" fill="var(--doc-soft)" stroke="var(--doc)" stroke-width="1.3"/>
+      <text x="40" y="496" font-size="14" font-weight="700" fill="var(--doc)">3 ĐỘC = CỎ DẠI · B4, B7</text>
+      <text x="40" y="520" font-size="13" fill="var(--ink)">Si (mê mờ, nhầm sử dụng thành sở hữu) → Tham (kéo về, dính mắc) → không được thì Sân (đẩy ra) / Sợ (né tránh)</text>
+      <text x="40" y="544" font-size="13" fill="var(--ink)">⇒ KHỔ (bất như ý) · cái tôi lớn · nội lực yếu hơn ngoại cảnh  ·  B11: Tập đế ⇒ Khổ đế</text>
+    </g>
+    <path d="M370 432V466" fill="none" stroke="var(--doc)" stroke-width="1.3" marker-end="url(#ar-doc)"/>
+    <text x="380" y="454" font-size="11.5" fill="var(--doc)">nhổ cỏ, chuyển hóa</text>
+    <path d="M120 600H880" fill="none" stroke="var(--line)"/>
+    <text x="500" y="626" text-anchor="middle" font-size="12.5" fill="var(--muted)">Nhịp hằng ngày: rèn tâm (thấy suy diễn) · rèn trí (thấy sự thật) · cống hiến (1 việc tốt) — B2, B12</text>
+  </svg>
+  </div>
+  <div class="detail" id="detail" aria-live="polite"><b>Bấm vào một khối</b>Chi tiết và bài liên quan sẽ hiện ở đây.</div>
+</section>
+
+<!-- 2 PATH -->
+<section class="panel" id="p-path" role="tabpanel" aria-labelledby="t-path" hidden>
+  <h2>12 bài đi qua 5 chặng, mỗi chặng xây trên chặng trước</h2>
+  <p class="lead">Các đường bên dưới cho thấy bài sau dùng lại công cụ của bài trước, ví dụ B11 Tứ Diệu Đế chính là sơ đồ Thân–Tâm của B7 nhìn theo cặp nhân quả.</p>
+  <div class="fig">
+  <svg viewBox="0 0 1000 440" role="img" aria-label="Lộ trình 12 bài theo 5 chặng">
+    <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+    <!-- stage bands -->
+    <g font-size="12" font-weight="700">
+      <rect x="20" y="20" width="168" height="34" rx="8" fill="var(--way-soft)"/><text x="104" y="42" text-anchor="middle" fill="var(--way)">1 · ĐẶT NỀN</text>
+      <rect x="200" y="20" width="250" height="34" rx="8" fill="var(--bao-soft)"/><text x="325" y="42" text-anchor="middle" fill="var(--bao)">2 · BẢN ĐỒ TÂM</text>
+      <rect x="462" y="20" width="168" height="34" rx="8" fill="var(--way-soft)"/><text x="546" y="42" text-anchor="middle" fill="var(--way)">3 · PHƯƠNG PHÁP</text>
+      <rect x="642" y="20" width="168" height="34" rx="8" fill="var(--goc-soft)"/><text x="726" y="42" text-anchor="middle" fill="var(--goc)">4 · NGƯỜI & ĐỜI</text>
+      <rect x="822" y="20" width="158" height="34" rx="8" fill="var(--doc-soft)"/><text x="901" y="42" text-anchor="middle" fill="var(--doc)">5 · CHÁNH PHÁP</text>
+    </g>
+    <!-- lesson nodes: two rows -->
+    <g font-size="12.5">
+      <g><rect x="24" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="62" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B1</text><text x="62" y="134" text-anchor="middle" fill="var(--ink)">Tâm thế</text><text x="62" y="152" text-anchor="middle" fill="var(--muted)" font-size="11">học thật</text></g>
+      <g><rect x="108" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="146" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B2</text><text x="146" y="134" text-anchor="middle" fill="var(--ink)">Nhân quả</text><text x="146" y="152" text-anchor="middle" fill="var(--muted)" font-size="11">sự thật/</text><text x="146" y="166" text-anchor="middle" fill="var(--muted)" font-size="11">suy diễn</text></g>
+      <g><rect x="204" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--bao)"/><text x="242" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B3</text><text x="242" y="134" text-anchor="middle" fill="var(--ink)">Tam Bảo</text><text x="242" y="152" text-anchor="middle" fill="var(--muted)" font-size="11">thức ăn</text><text x="242" y="166" text-anchor="middle" fill="var(--muted)" font-size="11">của tâm</text></g>
+      <g><rect x="288" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--doc)"/><text x="326" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B4</text><text x="326" y="134" text-anchor="middle" fill="var(--ink)">3 Độc</text><text x="326" y="152" text-anchor="middle" fill="var(--muted)" font-size="11">gốc khổ</text></g>
+      <g><rect x="372" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--goc)"/><text x="410" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B5</text><text x="410" y="134" text-anchor="middle" fill="var(--ink)">3 Gốc</text><text x="410" y="152" text-anchor="middle" fill="var(--muted)" font-size="11">gốc hạnh</text><text x="410" y="166" text-anchor="middle" fill="var(--muted)" font-size="11">phúc</text></g>
+      <g><rect x="466" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--way)"/><text x="504" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B6</text><text x="504" y="134" text-anchor="middle" fill="var(--ink)">Kỹ năng</text><text x="504" y="150" text-anchor="middle" fill="var(--ink)">vua</text><text x="504" y="168" text-anchor="middle" fill="var(--muted)" font-size="11">QS-PT-ĐK</text></g>
+      <g><rect x="550" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="588" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B7</text><text x="588" y="134" text-anchor="middle" fill="var(--ink)">Thân–Tâm</text><text x="588" y="152" text-anchor="middle" fill="var(--muted)" font-size="11">bản ngã</text></g>
+      <g><rect x="646" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="684" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B8</text><text x="684" y="134" text-anchor="middle" fill="var(--ink)">Giúp</text><text x="684" y="150" text-anchor="middle" fill="var(--ink)">người</text><text x="684" y="168" text-anchor="middle" fill="var(--muted)" font-size="11">9 cách độ</text></g>
+      <g><rect x="730" y="90" width="76" height="92" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="768" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B9</text><text x="768" y="134" text-anchor="middle" fill="var(--ink)">4 vòng</text><text x="768" y="150" text-anchor="middle" fill="var(--ink)">tròn</text><text x="768" y="168" text-anchor="middle" fill="var(--muted)" font-size="11">sợi chỉ đỏ</text></g>
+      <g><rect x="826" y="90" width="72" height="92" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="862" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B10</text><text x="862" y="134" text-anchor="middle" fill="var(--ink)">Bát</text><text x="862" y="150" text-anchor="middle" fill="var(--ink)">Chánh Đạo</text></g>
+      <g><rect x="904" y="90" width="72" height="92" rx="8" fill="var(--surface)" stroke="var(--line)"/><text x="940" y="112" text-anchor="middle" font-weight="700" fill="var(--ink)">B11</text><text x="940" y="134" text-anchor="middle" fill="var(--ink)">Tứ Diệu</text><text x="940" y="150" text-anchor="middle" fill="var(--ink)">Đế</text><text x="940" y="168" text-anchor="middle" fill="var(--muted)" font-size="11">tác ý, nghiệp</text></g>
+    </g>
+    <!-- sequence line -->
+    
+    <!-- links as lanes -->
+    <line x1="242" y1="236" x2="768" y2="236" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#ar2)"/>
+    <circle cx="242" cy="236" r="4" fill="var(--muted)"/>
+    <text x="505.0" y="230" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">Tam Bảo → vòng kiến thức tinh hoa</text>
+    <line x1="242" y1="200" x2="242" y2="236" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="768" y1="200" x2="768" y2="236" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="326" y1="266" x2="588" y2="266" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#ar2)"/>
+    <circle cx="326" cy="266" r="4" fill="var(--muted)"/>
+    <circle cx="410" cy="266" r="4" fill="var(--muted)"/>
+    <text x="457.0" y="260" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">3 độc + 3 gốc → sơ đồ Thân–Tâm</text>
+    <line x1="326" y1="200" x2="326" y2="266" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="410" y1="200" x2="410" y2="266" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="588" y1="200" x2="588" y2="266" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="410" y1="296" x2="862" y2="296" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#ar2)"/>
+    <circle cx="410" cy="296" r="4" fill="var(--muted)"/>
+    <text x="636.0" y="290" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">3 gốc = Giới Định Tuệ = 8 chánh</text>
+    <line x1="410" y1="200" x2="410" y2="296" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="862" y1="200" x2="862" y2="296" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="588" y1="326" x2="940" y2="326" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#ar2)"/>
+    <circle cx="588" cy="326" r="4" fill="var(--muted)"/>
+    <text x="764.0" y="320" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">Thân–Tâm = Khổ, Tập | Diệt, Đạo</text>
+    <line x1="588" y1="200" x2="588" y2="326" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="940" y1="200" x2="940" y2="326" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="146" y1="356" x2="940" y2="356" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#ar2)"/>
+    <circle cx="146" cy="356" r="4" fill="var(--muted)"/>
+    <text x="543.0" y="350" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">nhân quả, sự thật → nền của Tứ Diệu Đế</text>
+    <line x1="146" y1="200" x2="146" y2="356" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <line x1="940" y1="200" x2="940" y2="356" stroke="var(--line)" stroke-dasharray="2 3"/>
+    <!-- B12 -->
+    <rect x="300" y="390" width="400" height="38" rx="9" fill="var(--ink)"/>
+    <text x="500" y="414" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bg)">B12 Bế giảng: gom tất cả thành tiến trình chuyển hóa cuộc đời</text>
+  </svg>
+  </div>
+</section>
+
+<!-- 3 THAN TAM -->
+<section class="panel" id="p-body" role="tabpanel" aria-labelledby="t-body" hidden>
+  <h2>Sơ đồ Thân–Tâm: nửa đỏ là khổ và nguyên nhân, nửa xanh là hết khổ và con đường</h2>
+  <p class="lead">Đây là tấm bản đồ trung tâm của khóa (B7), được dùng lại ở B10 và B11. Thành công kéo người ta về nửa đỏ; chánh niệm mỗi ngày đưa về nửa xanh.</p>
+  <div class="fig">
+  <svg viewBox="0 0 1000 620" role="img" aria-label="Sơ đồ Thân Tâm, 3 độc và 3 gốc">
+    <defs>
+      <marker id="ar3d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--doc)"/></marker>
+      <marker id="ar3g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--goc)"/></marker>
+    </defs>
+    <text x="230" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="var(--doc)">KHỔ ĐẾ + TẬP ĐẾ</text>
+    <text x="230" y="56" text-anchor="middle" font-size="12" fill="var(--muted)">hiện trạng + nguyên nhân · phần "con"</text>
+    <text x="770" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="var(--goc)">DIỆT ĐẾ + ĐẠO ĐẾ</text>
+    <text x="770" y="56" text-anchor="middle" font-size="12" fill="var(--muted)">đích đến + giải pháp · phần "người"</text>
+    <g transform="translate(0,60)">
+    <!-- red triangle -->
+    <polygon points="230,90 380,350 80,350" fill="var(--doc-soft)" stroke="var(--doc)" stroke-width="1.6"/>
+    <text x="230" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Si · mê mờ</text>
+    <text x="72" y="374" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Tham</text>
+    <text x="72" y="392" text-anchor="middle" font-size="11.5" fill="var(--muted)">kéo về, dính mắc</text>
+    <text x="388" y="374" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Sân</text>
+    <text x="388" y="392" text-anchor="middle" font-size="11.5" fill="var(--muted)">đẩy ra, chối bỏ</text>
+    <circle cx="230" cy="262" r="40" fill="var(--surface)" stroke="var(--doc)"/>
+    <text x="230" y="258" text-anchor="middle" font-size="13" font-weight="700" fill="var(--doc)">Sợ</text>
+    <text x="230" y="276" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">bất an</text>
+    <text x="230" y="194" text-anchor="middle" font-size="12" fill="var(--ink)">CÁI TÔI LỚN</text>
+    <text x="230" y="212" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">tự cao, kiêu mạn</text>
+    <!-- green triangle -->
+    <polygon points="770,90 920,350 620,350" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.6"/>
+    <text x="770" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Trí tuệ · Tuệ</text>
+    <text x="612" y="374" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Đạo đức · Giới</text>
+    <text x="612" y="392" text-anchor="middle" font-size="11.5" fill="var(--muted)">vị tha &gt; vị kỷ</text>
+    <text x="928" y="374" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Nghị lực · Định</text>
+    <text x="928" y="392" text-anchor="middle" font-size="11.5" fill="var(--muted)">dũng, nhẫn, tĩnh</text>
+    <text x="770" y="250" text-anchor="middle" font-size="12" fill="var(--ink)">CÁI TÔI NHỎ → VÔ NGÃ</text>
+    <text x="770" y="268" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">khiêm hạ, hòa thuận, bình an</text>
+    <!-- body -->
+    <rect x="440" y="196" width="120" height="76" rx="10" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.3"/>
+    <text x="500" y="226" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">THÂN</text>
+    <text x="500" y="246" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">gần: vật chất</text>
+    <text x="500" y="261" text-anchor="middle" font-size="11" fill="var(--muted)" stroke="var(--surface)" stroke-width="4" paint-order="stroke">xa: nghề, sức khỏe</text>
+    </g>
+    <path d="M700 168C600 100 400 100 300 168" fill="none" stroke="var(--doc)" stroke-width="1.5" marker-end="url(#ar3d)"/>
+    <text x="500" y="92" text-anchor="middle" font-size="12" fill="var(--doc)">"lằn đỏ": thành công → hưởng thụ, thấy mình hay, khinh người</text>
+    <text x="230" y="486" text-anchor="middle" font-size="12" fill="var(--muted)">Nội lực &lt; Bên ngoài · cảm xúc quá đà</text>
+    <text x="770" y="486" text-anchor="middle" font-size="12" fill="var(--muted)">Nội lực &gt; Bên ngoài · cảm xúc bình ổn</text>
+    <path d="M300 504C400 556 600 556 700 504" fill="none" stroke="var(--goc)" stroke-width="1.5" marker-end="url(#ar3g)"/>
+    <text x="500" y="572" text-anchor="middle" font-size="12" fill="var(--goc)">"lằn xanh": khổ đủ lớn → tầm sư học đạo → chánh niệm, Vipassana mỗi ngày</text>
+    <text x="500" y="602" text-anchor="middle" font-size="12" fill="var(--muted)">Bên cạnh thành công là vực thẳm thất bại · Khổ đế là chất liệu để quay về</text>
+  </svg>
+  </div>
+</section>
+
+<!-- 4 GRID -->
+<section class="panel" id="p-grid" role="tabpanel" aria-labelledby="t-grid" hidden>
+  <h2>Một ý tưởng, bốn cách gọi: 3 Gốc = Giới Định Tuệ = Bát Chánh Đạo</h2>
+  <p class="lead">Bảng này nối các bài với nhau theo hàng ngang. Đọc một hàng là thấy cùng một gốc xuất hiện ở bài nào, dưới tên gì, và đối nghịch với độc nào.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>3 Gốc (B5)</th><th>Đạo học</th><th>Thành phần</th><th>Bát Chánh Đạo (B10)</th><th>Coach gọi là</th><th>Đối nghịch (B4)</th><th>Thiếu gốc này thì…</th></tr></thead>
+    <tbody>
+      <tr><td class="k goc-c">Trí tuệ</td><td>Tuệ</td><td>Hiểu rõ nhân quả + có giải pháp thực tế</td><td>Chánh kiến · Chánh tư duy</td><td>Trí sáng suốt</td><td class="doc-c">Si (vô minh)</td><td>Nhiệt tình + dốt nát = phá hoại</td></tr>
+      <tr><td class="k goc-c">Đạo đức</td><td>Giới</td><td>Vị tha &gt; vị kỷ · Từ Bi Hỷ Xả</td><td>Chánh ngữ · Chánh nghiệp · Chánh mạng</td><td>Sống cống hiến</td><td class="doc-c">Tham (vị kỷ)</td><td>Thành công không bền: quan tham, mafia</td></tr>
+      <tr><td class="k goc-c">Nghị lực</td><td>Định</td><td>Dũng · Nhẫn · Tĩnh</td><td>Chánh tinh tấn · Chánh niệm · Chánh định</td><td>Tâm vững vàng</td><td class="doc-c">Sân, Sợ (dao động)</td><td>Tiến sĩ giấy, nói giỏi làm dở</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Hai "vua" cần nhớ: chánh kiến là vua của Bát Chánh Đạo; chánh niệm (tâm quan sát) là vua của tu tập.</p>
+
+  <h2 style="margin-top:28px">Tứ Diệu Đế là hai cặp nhân quả</h2>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Nhân</th><th>Quả</th><th>Trên sơ đồ Thân–Tâm (B7)</th><th>Hiểu sai thường gặp</th></tr></thead>
+    <tbody>
+      <tr><td class="k doc-c">Cặp khổ</td><td><b>Tập đế</b>: mong cầu như ý, dính mắc; sâu hơn là vô minh + tham ái</td><td><b>Khổ đế</b>: bất như ý, không hài lòng</td><td>Nửa đỏ, cái tôi lớn</td><td>Tưởng khổ là chuyện xấu xảy ra; tưởng nguyên nhân là hoàn cảnh, người khác</td></tr>
+      <tr><td class="k goc-c">Cặp hết khổ</td><td><b>Đạo đế</b>: Bát Chánh Đạo, Giới Định Tuệ</td><td><b>Diệt đế</b>: bình an, vô ngã, hạnh phúc không mong cầu</td><td>Nửa xanh, cái tôi nhỏ</td><td>Tưởng hạnh phúc là mọi thứ diễn ra như ý</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 style="margin-top:28px">Các công cụ thực hành và bài gốc của chúng</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Công cụ</th><th>Dùng khi</th><th>Bài</th></tr></thead>
+    <tbody>
+      <tr><td class="k">"Tôi suy diễn là… nhưng sự thật là…"</td><td>Đang buồn, giận, thất vọng về ai đó</td><td>B2</td></tr>
+      <tr><td class="k">Dừng 10 giây · hít thở · "tâm gì đang vận hành?"</td><td>Cơn giận, tâm tạo tác vừa nổi lên</td><td>B4, B6</td></tr>
+      <tr><td class="k">Làm mới tình thương (8 câu)</td><td>Hàn gắn quan hệ, khép lại quá khứ</td><td>B4</td></tr>
+      <tr><td class="k">1 câu nói → 1 tâm → 1 hành động · Nhật ký 3 dòng</td><td>Cuối ngày, tự học từ đời sống</td><td>B6</td></tr>
+      <tr><td class="k">Câu tác ý theo biểu hiện bản ngã · Khuất phục bản ngã</td><td>Thấy mình kiêu, che đậy, chê bai, bào chữa</td><td>B7</td></tr>
+      <tr><td class="k">9 cách độ ta, độ người · Sự lôi cuốn thánh thiện</td><td>Muốn giúp người thân thay đổi</td><td>B8</td></tr>
+      <tr><td class="k">Sợi chỉ đỏ theo 4 vòng · Tên tác ý</td><td>Định hướng nghề, sự nghiệp ý nghĩa</td><td>B9</td></tr>
+      <tr><td class="k">Ghi nhận sự chuyển hóa theo 8 chánh</td><td>Nhìn lại tiến bộ của mình</td><td>B10</td></tr>
+      <tr><td class="k">Tạo phước + Như lý tác ý · 4 Lời hứa từ tâm</td><td>Mỗi ngày, để gieo nhân mới</td><td>B11</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 5 EACH -->
+<section class="panel" id="p-each" role="tabpanel" aria-labelledby="t-each" hidden>
+  <h2>Mỗi bài một sơ đồ</h2>
+  <p class="lead">Chọn bài để xem sơ đồ cốt lõi và ba ý cần nhớ.</p>
+  <div class="lesson-pick" id="pick"></div>
+  <div class="lesson" id="lesson"></div>
+</section>
+
+<!-- 6 FLOW -->
+<section class="panel" id="p-flow" role="tabpanel" aria-labelledby="t-flow" hidden>
+  <h2>Gặp chuyện bất như ý: dừng, gọi tên tâm, nhìn sự thật, rồi gieo nhân mới</h2>
+  <p class="lead">Lưu đồ này ghép các công cụ rải rác trong khóa thành một quy trình dùng được ngay trong ngày. Nhãn nhỏ ở góc mỗi bước cho biết công cụ đến từ bài nào.</p>
+  <div class="fig flow"><svg viewBox="0 0 900 1144" role="img" aria-label="Lưu đồ xử lý một chuyện bất như ý"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs><rect x="250" y="20" width="400" height="56" rx="28" fill="var(--doc-soft)" stroke="var(--doc)" stroke-width="1.4"/><text x="450" y="45" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)">Chuyện bất như ý xảy ra</text><text x="450" y="64" text-anchor="middle" font-size="12" fill="var(--muted)">một câu nói, một hành vi, một hoàn cảnh</text><rect x="250" y="100" width="400" height="70" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="266" y="126" font-size="14" font-weight="700" fill="var(--ink)">1 · DỪNG LẠI 10 GIÂY</text><text x="636" y="126" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B4</text><text x="266" y="148" font-size="12.5" fill="var(--muted)">Đèn đỏ: hít thở, quay vào trong lồng ngực</text><polygon points="340,232 450,192 560,232 450,272" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.4"/><text x="450" y="229" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Cảm xúc còn</text><text x="450" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">trào dâng?</text><rect x="690" y="196" width="190" height="72" rx="9" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.4"/><text x="706" y="222" font-size="14" font-weight="700" fill="var(--ink)">Rời chỗ 10 phút</text><text x="706" y="244" font-size="12.5" fill="var(--muted)">uống nước, đi bộ,</text><text x="706" y="262" font-size="12.5" fill="var(--muted)">đọc tác ý "Dịu dàng"</text><rect x="250" y="300" width="400" height="100" rx="9" fill="var(--doc-soft)" stroke="var(--doc)" stroke-width="1.4"/><text x="266" y="326" font-size="14" font-weight="700" fill="var(--ink)">2 · GỌI TÊN TÂM ĐANG VẬN HÀNH</text><text x="636" y="326" text-anchor="end" font-size="11" font-weight="600" fill="var(--doc)">B4 · B6</text><text x="266" y="348" font-size="12.5" fill="var(--muted)">Tham: mình đang muốn như ý điều gì?</text><text x="266" y="366" font-size="12.5" fill="var(--muted)">Sân / Sợ: mình muốn đẩy ra hay né tránh?</text><text x="266" y="384" font-size="12.5" fill="var(--muted)">Si: mình đang chưa thấy điều gì?</text><rect x="250" y="424" width="400" height="82" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="266" y="450" font-size="14" font-weight="700" fill="var(--ink)">3 · TÁCH SỰ THẬT KHỎI SUY DIỄN</text><text x="636" y="450" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B2</text><text x="266" y="472" font-size="12.5" fill="var(--muted)">"Tôi suy diễn là… nhưng sự thật là…"</text><text x="266" y="490" font-size="12.5" fill="var(--muted)">Dưới suy diễn đang có mong cầu nào?</text><rect x="250" y="530" width="400" height="100" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="266" y="556" font-size="14" font-weight="700" fill="var(--ink)">4 · SOI NHÂN – DUYÊN – QUẢ</text><text x="636" y="556" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B6 · B11</text><text x="266" y="578" font-size="12.5" fill="var(--muted)">Nhân: phần của mình ("Tôi là nhân")</text><text x="266" y="596" font-size="12.5" fill="var(--muted)">Duyên: hoàn cảnh, người khác</text><text x="266" y="614" font-size="12.5" fill="var(--muted)">Khổ = không hài lòng; gốc là mong cầu</text><polygon points="340,692 450,652 560,692 450,732" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.4"/><text x="450" y="697" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Việc tiếp theo?</text><rect x="20" y="764" width="260" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="36" y="790" font-size="14" font-weight="700" fill="var(--ink)">Nhận lỗi, làm mới tình thương</text><text x="36" y="812" font-size="12.5" fill="var(--muted)">8 câu, xin lỗi chân thành</text><text x="36" y="830" font-size="12.5" fill="var(--muted)">"soi rõ lỗi mình, chấp nhận lỗi người"</text><rect x="320" y="764" width="260" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="336" y="790" font-size="14" font-weight="700" fill="var(--ink)">Giúp đúng cách</text><text x="336" y="812" font-size="12.5" fill="var(--muted)">mình tốt lên trước, làm gương</text><text x="336" y="830" font-size="12.5" fill="var(--muted)">bánh mì kẹp giáo dục, 9 cách độ</text><rect x="620" y="764" width="260" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="636" y="790" font-size="14" font-weight="700" fill="var(--ink)">Buông xả, chấp nhận</text><text x="636" y="812" font-size="12.5" fill="var(--muted)">tâm xả: không dính, không chối</text><text x="636" y="830" font-size="12.5" fill="var(--muted)">hiểu và đón nhận duyên hiện tại</text><text x="150" y="864" text-anchor="middle" font-size="11" font-weight="600" fill="var(--goc)">B4 · B7</text><text x="460" y="864" font-size="11" font-weight="600" fill="var(--goc)">B8</text><text x="750" y="864" text-anchor="middle" font-size="11" font-weight="600" fill="var(--goc)">B5 · B11</text><rect x="230" y="896" width="440" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="246" y="922" font-size="14" font-weight="700" fill="var(--ink)">5 · GIEO NHÂN MỚI</text><text x="656" y="922" text-anchor="end" font-size="11" font-weight="600" fill="var(--goc)">B6 · B11</text><text x="246" y="944" font-size="12.5" fill="var(--muted)">1 hành động nhỏ, cụ thể, làm ngay hôm nay</text><text x="246" y="962" font-size="12.5" fill="var(--muted)">+ 1 việc phước + 1 câu như lý tác ý</text><rect x="230" y="1002" width="440" height="64" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="246" y="1028" font-size="14" font-weight="700" fill="var(--ink)">6 · TỐI: NHẬT KÝ 3 DÒNG</text><text x="656" y="1028" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B6</text><text x="246" y="1050" font-size="12.5" fill="var(--muted)">Cảnh hôm nay – Tâm mình lúc đó – Nhân mới muốn gieo</text><g fill="none" stroke="var(--muted)" stroke-width="1.3"><path d="M450 76V96" marker-end="url(#fa)"/><path d="M450 170V188" marker-end="url(#fa)"/><path d="M560 232H686" marker-end="url(#fa)"/><path d="M785 196V135H654" marker-end="url(#fa)"/><path d="M450 272V296" marker-end="url(#fa)"/><path d="M450 400V420" marker-end="url(#fa)"/><path d="M450 506V526" marker-end="url(#fa)"/><path d="M450 630V648" marker-end="url(#fa)"/><path d="M340 692H150V760" marker-end="url(#fa)"/><path d="M560 692H750V760" marker-end="url(#fa)"/><path d="M450 732V760" marker-end="url(#fa)"/><path d="M150 872V884H450"/><path d="M750 872V884H450"/><path d="M450 846V892" marker-end="url(#fa)"/><path d="M450 978V998" marker-end="url(#fa)"/></g><text x="620" y="224" text-anchor="middle" font-size="11.5" fill="var(--muted)">còn</text><text x="462" y="290" font-size="11.5" fill="var(--muted)">đã lắng</text><text x="796" y="168" font-size="11.5" fill="var(--muted)">rồi quay lại</text><text x="245" y="684" text-anchor="middle" font-size="11.5" fill="var(--muted)">mình đã làm tổn thương</text><text x="655" y="684" text-anchor="middle" font-size="11.5" fill="var(--muted)">không có gì cần làm</text><text x="458" y="750" font-size="11.5" fill="var(--muted)">họ cần được giúp</text><text x="450" y="1102" text-anchor="middle" font-size="12.5" fill="var(--ink)">Trước khi có chuyện: nói ít lại, lắng nghe nhiều hơn · phản ứng ít lại, quan sát nhiều hơn</text><text x="450" y="1124" text-anchor="middle" font-size="12" fill="var(--muted)">Nhân là Tham – Sân – Si thì Quả là Đau khổ; thấy đúng chừng nào, buông xả chừng đó</text></svg></div>
+  <p class="note">Mẹo nhớ: <b>Dừng – Gọi tên – Sự thật – Nhân quả – Gieo nhân – Ghi lại.</b> Ban đầu đi hết 6 bước chậm rãi; tập lâu thì bước 1 đến 4 diễn ra trong vài giây.</p>
+</section>
+
+<!-- 7 MIND -->
+<section class="panel" id="p-mind" role="tabpanel" aria-labelledby="t-mind" hidden>
+  <h2>Sơ đồ tư duy: 12 nhánh tỏa ra từ một gốc Chánh Kiến</h2>
+  <p class="lead">Bên phải là 6 bài đầu (nền tảng và bản đồ tâm), bên trái là 6 bài sau (ứng dụng và chánh pháp). Mỗi nhánh giữ 4 ý cần thuộc. Đọc theo chiều kim đồng hồ từ B1.</p>
+  <div class="fig mind" id="mindfig"></div>
+</section>
+</div>
+
+<script>
+(function(){
+  // tabs
+  const tabs=[...document.querySelectorAll('nav [role=tab]')];
+  function show(id){tabs.forEach(t=>{const on=t.id===id;t.setAttribute('aria-selected',on);document.getElementById(t.getAttribute('aria-controls')).hidden=!on});try{localStorage.setItem('ck3h-tab',id)}catch(e){}}
+  tabs.forEach(t=>t.addEventListener('click',()=>show(t.id)));
+  const hashMap={map:'t-map',path:'t-path',body:'t-body',grid:'t-grid',each:'t-each',flow:'t-flow',mind:'t-mind'};
+  let start=hashMap[(location.hash||'').slice(1)];
+  if(!start){try{start=localStorage.getItem('ck3h-tab')}catch(e){}}
+  if(start&&document.getElementById(start))show(start);
+
+  // concept map details
+  const D={
+    chanhkien:['Chánh kiến · B1, B2','Cái thấy đúng và toàn diện: nhìn sự việc đúng bản chất trên tiến trình nhân quả. Đi kèm tâm thế học thật: khiêm hạ, nhận lỗi sửa mình, chủ động gieo nhân mới. Công cụ đầu tiên là tách sự thật khỏi suy diễn.'],
+    thay:['Thầy hiền trí · B3','Người trao tấm bản đồ, kim chỉ nam. Phải đủ Hiền (đạo đức) và Trí (trí tuệ). Nên học vài vị, mỗi năm 1–2 khóa, nghe lại bài nhiều lần. "Thân cận thầy cho đến khi nội lực vững."'],
+    sach:['Sách tinh hoa · B3','Thức ăn của tâm có mặt mọi lúc: sách giấy, sách nói, loa pháp thoại. Tủ sách 12 đầu mục; hai mục sâu nhất là đạo đức nhân cách và đạo lý minh triết. Mỗi ngày ít nhất 15 phút.'],
+    ban:['Nhóm bạn tốt · B3','Ngăn điều xấu, rủ làm việc tốt, giúp duy trì thói quen. Vợ chồng là bạn đời rồi thành bạn đạo. Môi trường mạnh hơn ý chí với khoảng 95% người.'],
+    vtt:['Văn – Tư – Tu · B1, B6','Học (nghe, đọc) 10% → Hiểu (suy ngẫm, đúc kết, thảo luận nhóm) 20% → Hành (áp dụng thực tế) 70%. Học mà thiếu Hiểu thì máy móc; thiếu Hành thì "thừa văn thiếu hóa".'],
+    qspt:['Quan sát – Phân tích – Đúc kết · B6','Kỹ năng tự học, "kỹ năng vua". Quan sát đa chiều (mình, họ, minh sư) → phân tích Nhân – Duyên – Quả → đúc kết lõi, và chỉ ra quyết định ở bước này → trình bày, dạy lại.'],
+    niem:['Tâm quan sát · Chánh niệm · B4, B10','Chậm lại 10 giây, nhận diện tâm gì đang vận hành, rồi mới nói và làm. Tâm quan sát mạnh thì tâm tạo tác yếu. Chánh niệm là vua của tu tập; thiền Vipassana sửa tâm tận gốc.'],
+    tacy:['Như lý tác ý + Tạo phước · B11','Tạo phước là đất tốt (≥ 3 việc tốt mỗi ngày); như lý tác ý là hạt mầm (đọc sau mỗi việc phước). Ý nghiệp lặp lại đủ lâu sẽ trổ thành thân nghiệp, như giọt nước tràn ly.'],
+    kho:['Khó khăn, va chạm đủ lớn · B3, B5, B11','Khó khăn là thức ăn của nghị lực. Khổ đế đứng đầu các đế: người ta phải khổ đủ lớn mới chịu quay về nhìn lại mình.'],
+    goc:['3 Gốc · B5','Đạo đức (vị tha, Từ Bi Hỷ Xả) – Trí tuệ (hiểu nhân quả + giải pháp) – Nghị lực (Dũng, Nhẫn, Tĩnh). Tuy ba mà một: gãy một gốc là hỏng người. Là phước vô lậu, càng cho càng lớn.'],
+    ynghia:['Cuộc đời ý nghĩa · B2','Ý nghĩa cuộc đời = Rèn mình + Cống hiến: gieo nhân đúng, bỏ nhân sai để vun phẩm chất và mang giá trị cho người. Đời nhạt nhòa là lúc bỏ quên hai điều này.'],
+    vtdt:['Sợi chỉ đỏ · B9','4 vòng tròn đào tạo: kiến thức → kỹ năng → xu hướng tính cách → nhân cách cốt lõi; làm đúng là đi từ lõi ra. Sứ mệnh = 3 gốc + sợi chỉ đỏ; tầm nhìn = sứ mệnh × quy mô.'],
+    giup:['Giúp người đúng cách · B8','4 cách giúp: thân gần, thân xa (bánh mì) phải kẹp đạo đức, đạo lý (giáo dục). Ưu tiên người tiềm năng và có ảnh hưởng. Mình tốt lên trước, rồi dùng 9 cách độ ta độ người.'],
+    toi:['Cái tôi nhỏ → vô ngã · B7, B11','Bản ngã gồm "cái tôi" và "cái của tôi". Gọt dần bằng chánh niệm và câu tác ý cho đến khi 3 gốc tròn đầy, 3 độc biến mất: đó là Diệt đế.'],
+    doc:['3 Độc · B4, B7, B11','Si nhầm sử dụng thành sở hữu → sinh Tham (kéo về) → không được thì Sân (đẩy ra) hoặc Sợ (né tránh) → Khổ. "Nhân là Tham – Sân – Si thì Quả là Đau khổ." 3 gốc là lúa, 3 độc là cỏ.']
+  };
+  const det=document.getElementById('detail');
+  document.querySelectorAll('.node').forEach(n=>{
+    const f=()=>{const d=D[n.dataset.k];if(d)det.innerHTML='<b>'+d[0]+'</b>'+d[1]};
+    n.addEventListener('click',f);n.addEventListener('focus',f);
+    n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f()}});
+  });
+
+  // lessons
+  const C={doc:'var(--doc)',goc:'var(--goc)',bao:'var(--bao)',way:'var(--way)',ink:'var(--ink)',mu:'var(--muted)',line:'var(--line)',ds:'var(--doc-soft)',gs:'var(--goc-soft)',bs:'var(--bao-soft)',ws:'var(--way-soft)',sf:'var(--surface)'};
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const box=(x,y,w,h,t,sub,stroke,fill)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${fill||C.sf}" stroke="${stroke||C.line}" stroke-width="1.3"/><text x="${x+w/2}" y="${y+(sub?h/2-3:h/2+5)}" text-anchor="middle" font-size="13.5" font-weight="700" fill="${C.ink}">${esc(t)}</text>`+(sub?`<text x="${x+w/2}" y="${y+h/2+15}" text-anchor="middle" font-size="11.5" fill="${C.mu}">${esc(sub)}</text>`:'');
+  const arr=(d,col)=>`<path d="${d}" fill="none" stroke="${col||C.mu}" stroke-width="1.3" marker-end="url(#la)"/>`;
+  const txt=(x,y,t,o={})=>`<text x="${x}" y="${y}" text-anchor="${o.a||'middle'}" font-size="${o.s||12}" font-weight="${o.w||400}" fill="${o.c||C.mu}">${esc(t)}</text>`;
+  const svg=(h,body,label)=>`<svg viewBox="0 0 560 ${h}" role="img" aria-label="${esc(label)}"><defs><marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>${body}</svg>`;
+
+  const L=[
+   {n:'B1',t:'Khai giảng – Tâm thế đúng đắn',one:'Muốn chuyển hóa thật thì phải học thật, với 3 tâm thế.',
+    pts:['Khiêm hạ – biết ơn; nhận lỗi – sửa mình; chủ động gieo nhân mới.','Học Thật: học kỹ, hiểu sâu, thực hành đúng, kiên trì, cầu thị.','3 bước sau mỗi buổi: suy ngẫm ngắn → hành động sớm → hoàn thiện, báo cáo.'],
+    q:'Ai cũng bình đẳng trên hành trình Nhân + Duyên ⇒ Quả.',
+    d:()=>svg(260,`${box(20,20,520,44,'Người 3 Gốc','',C.goc,C.gs)}
+      ${box(20,96,160,70,'Khiêm hạ','biết ơn',C.line)}${box(200,96,160,70,'Nhận lỗi','sửa mình',C.line)}${box(380,96,160,70,'Chủ động','gieo nhân mới',C.line)}
+      ${arr('M100 96V68')}${arr('M280 96V68')}${arr('M460 96V68')}
+      ${txt(100,190,'không tự cao')}${txt(280,190,'không đổ lỗi, sửa người')}${txt(460,190,'không đợi quả')}
+      ${txt(280,236,'Thấy lỗi → Nhận lỗi → Xin lỗi → Sửa mình (Toyota)',{c:C.ink,s:12.5})}`,'3 tâm thế')},
+   {n:'B2',t:'Tư duy nhân quả – Ý nghĩa cuộc đời',one:'Chánh kiến là nhìn đúng sự thật trên tiến trình nhân quả.',
+    pts:['Đừng vội tin, kể cả suy nghĩ của mình; suy xét lại để bật ngọn đèn trong tâm.','Tách sự thật khỏi suy diễn; dưới suy diễn là mong cầu của mình.','Ý nghĩa cuộc đời = Rèn mình + Cống hiến.'],
+    q:'Tôi là Nhân, cuộc đời tôi là Quả.',
+    d:()=>svg(250,`${box(20,40,160,58,'Nhân sai','suy diễn, 3 độc',C.doc,C.ds)}${box(380,40,160,58,'Quả xấu','khổ, thất bại',C.doc,C.ds)}${arr('M180 69H376',C.doc)}
+      ${box(20,140,160,58,'Nhân đúng','sự thật, 3 gốc',C.goc,C.gs)}${box(380,140,160,58,'Quả tốt','hạnh phúc, ý nghĩa',C.goc,C.gs)}${arr('M180 169H376',C.goc)}
+      ${txt(280,62,'suy nghĩ – lời nói – hành động',{s:11.5})}${txt(280,162,'suy nghĩ – lời nói – hành động',{s:11.5})}
+      ${txt(280,24,'Chánh kiến: nhìn đúng sự thật trên 1 tiến trình',{c:C.ink,w:700,s:13})}
+      ${txt(280,234,'Tư duy xuôi: nhân → nhiều quả · Tư duy ngược: quả → nhân gốc',{s:12})}`,'Nhân quả')},
+   {n:'B3',t:'Môi trường sống lý tưởng – Tam Bảo',one:'3 báu vật là thức ăn của tâm, nuôi lớn 3 gốc.',
+    pts:['Thầy hiền trí trao bản đồ; sách tinh hoa nuôi tâm hằng ngày; bạn tốt giúp duy trì.','Báu vật khác phổ thông: kiến thức vô biên, tinh hoa hữu hạn.','Môi trường mạnh hơn ý chí; nội lực còn yếu thì phải nương Tam Bảo.'],
+    q:'Đời ta thay đổi bởi người ta gặp, sách ta đọc, thầy ta theo.',
+    d:()=>svg(280,`<polygon points="280,40 460,230 100,230" fill="${C.bs}" stroke="${C.bao}" stroke-width="1.5"/>
+      ${txt(280,30,'Thầy hiền trí',{c:C.ink,w:700,s:13.5})}${txt(90,254,'Sách tinh hoa',{c:C.ink,w:700,s:13.5})}${txt(470,254,'Nhóm bạn tốt',{c:C.ink,w:700,s:13.5})}
+      ${txt(280,160,'TÂM',{c:C.bao,w:700,s:16})}${txt(280,180,'được nuôi',{s:11.5})}
+      ${txt(150,124,'bản đồ',{s:11.5,a:'end'})}${txt(410,124,'chỉ lối',{s:11.5,a:'start'})}${txt(280,222,'mỗi ngày · duy trì thói quen',{s:11.5})}`,'Tam Bảo')},
+   {n:'B4',t:'Cội nguồn khổ đau – 3 Độc',one:'Si sinh Tham, Tham không được thì sinh Sân và Sợ, tất cả dẫn đến Khổ.',
+    pts:['Tham: nắm kéo về, dính mắc. Sân: đẩy ra, chối bỏ. Sợ: né tránh.','Tâm quan sát là vua của tu tập: dừng 10 giây trước khi nói, làm.','Làm mới tình thương với 8 câu để khép lại quá khứ.'],
+    q:'Nhân là Tham – Sân – Si thì Quả là Đau khổ.',
+    d:()=>svg(270,`${box(20,30,120,52,'Si','mê mờ',C.doc,C.ds)}${box(170,30,120,52,'Tham','muốn như ý',C.doc,C.ds)}${box(320,6,110,46,'Sân','đẩy ra',C.doc,C.ds)}${box(320,62,110,46,'Sợ','né tránh',C.doc,C.ds)}${box(456,30,84,52,'KHỔ','',C.doc,C.sf)}
+      ${arr('M140 56H166',C.doc)}${arr('M290 50L316 32',C.doc)}${arr('M290 62L316 84',C.doc)}${arr('M430 30L452 46',C.doc)}${arr('M430 84L452 68',C.doc)}
+      ${txt(304,128,'không được như ý',{s:11})}
+      ${box(20,160,240,58,'Tâm tạo tác','phản ứng, bản năng',C.line)}${box(300,160,240,58,'Tâm quan sát','dừng 10s, nhận diện',C.way,C.ws)}${arr('M260 189H296',C.way)}
+      ${txt(280,246,'Tâm quan sát mạnh → tâm tạo tác yếu',{c:C.ink,s:12.5})}`,'3 độc')},
+   {n:'B5',t:'Cội nguồn hạnh phúc – 3 Gốc',one:'Đạo đức – Trí tuệ – Nghị lực: tuy ba mà một, gãy một gốc là hỏng người.',
+    pts:['Trí tuệ = hiểu nhân quả + giải pháp. Nghị lực = Dũng + Nhẫn + Tĩnh. Đạo đức = vị tha, Từ Bi Hỷ Xả.','Khó khăn là thức ăn của nghị lực; tâm Xả là nền của mọi tâm thiện.','3 gốc là phước vô lậu: càng cho đi càng lớn.'],
+    q:'Nơi nào hội tụ 3 gốc, nơi đó có con người tinh hoa.',
+    d:()=>svg(300,`<polygon points="280,40 450,240 110,240" fill="${C.gs}" stroke="${C.goc}" stroke-width="1.5"/>
+      ${txt(280,30,'Trí tuệ',{c:C.ink,w:700,s:14})}${txt(96,264,'Đạo đức',{c:C.ink,w:700,s:14})}${txt(464,264,'Nghị lực',{c:C.ink,w:700,s:14})}
+      ${txt(150,140,'thiếu nghị lực:',{s:11,c:C.doc,a:'end'})}${txt(150,156,'tiến sĩ giấy',{s:11,c:C.doc,a:'end'})}
+      ${txt(410,140,'thiếu đạo đức:',{s:11,c:C.doc,a:'start'})}${txt(410,156,'quan tham, mafia',{s:11,c:C.doc,a:'start'})}
+      ${txt(280,268,'thiếu trí tuệ: nhiệt tình + dốt nát = phá hoại',{s:11,c:C.doc})}
+      ${txt(280,180,'Giới · Định · Tuệ',{s:12})}${txt(280,288,'Thành công = trí + nghị lực · bền vững cần thêm đạo đức',{s:11.5})}`,'3 gốc')},
+   {n:'B6',t:'Kỹ năng vua – Tiến trình chuyển hóa',one:'Tự học sâu là ghép Quan sát – Phân tích – Đúc kết với Văn – Tư – Tu.',
+    pts:['Quan sát 3 chiều: mình, họ, minh sư. Chỉ ra quyết định sau khi đúc kết.','Văn 10 – Tư 20 – Tu 70; chỗ hay bỏ cuộc nhất là Tu, cần nhóm bạn thúc đẩy.','Thực hành nhỏ nhất: 1 câu nói → 1 tâm → 1 hành động.'],
+    q:'Muốn giúp người phải sửa mình; muốn sửa mình phải quan sát được mình.',
+    d:()=>svg(250,`${box(10,20,120,56,'Quan sát','đa chiều',C.way,C.ws)}${box(150,20,120,56,'Phân tích','nhân–duyên–quả',C.way,C.ws)}${box(290,20,120,56,'Đúc kết','lõi → quyết định',C.way,C.ws)}${box(430,20,120,56,'Trình bày','dạy lại, kaizen',C.line)}
+      ${arr('M130 48H146',C.way)}${arr('M270 48H286',C.way)}${arr('M410 48H426',C.way)}
+      <rect x="10" y="130" width="54" height="40" rx="6" fill="${C.ws}" stroke="${C.way}"/><rect x="64" y="130" width="108" height="40" fill="${C.bs}" stroke="${C.bao}"/><rect x="172" y="130" width="378" height="40" rx="6" fill="${C.gs}" stroke="${C.goc}"/>
+      ${txt(37,155,'Văn',{c:C.ink,w:700})}${txt(118,155,'Tư 20%',{c:C.ink,w:700})}${txt(361,155,'Tu 70% · thực hành, nhóm bạn thúc đẩy',{c:C.ink,w:700})}
+      ${txt(280,196,'Văn 10%: thầy chỉ bản đồ · Tư: tự mình + thảo luận nhóm',{s:11.5})}
+      ${txt(280,226,'Đơn giản ngây thơ → phức tạp rối rắm → đơn giản minh triết',{s:12,c:C.ink})}`,'Kỹ năng vua')},
+   {n:'B7',t:'Sơ đồ Thân–Tâm – Bản ngã',one:'Thành công kéo cái tôi lớn lên; chánh niệm mỗi ngày gọt nó nhỏ lại.',
+    pts:['Bản ngã = cái tôi (ý kiến, vai trò) + cái của tôi (nhà, con, tài sản).','Lãnh đạo cấp 5: quyết tâm tận cùng + khiêm tốn tận cùng.','Câu tác ý theo biểu hiện bản ngã; khuất phục bản ngã bằng một lời xin lỗi thật.'],
+    q:'Tôi là thứ tôi chọn, không chết trong nhãn dán của quá khứ.',
+    d:()=>svg(280,`${box(20,30,150,50,'Hàn vi','3 độc, si',C.doc,C.ds)}${box(205,30,150,50,'Nỗ lực, học','trí + nghị lực',C.goc,C.gs)}${box(390,30,150,50,'Thành công','hưởng thụ, tự cao',C.doc,C.ds)}
+      ${box(390,150,150,50,'Phá sản','khổ đủ lớn',C.doc,C.ds)}${box(205,150,150,50,'Tầm sư học đạo','chánh niệm, thiền',C.goc,C.gs)}${box(20,150,150,50,'Cái tôi nhỏ','khiêm hạ → vô ngã',C.goc,C.gs)}
+      ${arr('M170 55H201')}${arr('M355 55H386')}${arr('M465 80V146',C.doc)}${arr('M390 175H359')}${arr('M205 175H174',C.goc)}
+      ${txt(474,118,'cái tôi lớn',{s:11,a:'start',c:C.doc})}${txt(280,236,'Bên cạnh thành công là vực thẳm thất bại; khổ đế là chất liệu quay về',{s:11.5})}`,'Bản ngã')},
+   {n:'B8',t:'4 cách giúp người',one:'Bánh mì phải kẹp giáo dục: giúp vật chất, nghề nghiệp phải gài đạo đức, đạo lý.',
+    pts:['Ưu tiên người tiềm năng và có ảnh hưởng mạnh ("giúp sỉ").','Mình tốt lên trước rồi mới độ người; đừng soi lỗi người thân bằng "tam độc".','9 cách độ ta, độ người: làm gương, cho nhỏ đều đặn, lắng nghe, phục vụ, nhờ giảng lại…'],
+    q:'Cuộc đời có 2 bàn tay: một giúp mình, một giúp người.',
+    d:()=>svg(270,`${box(120,20,320,44,'4 · Đạo lý','chân lý, lý tưởng',C.goc,C.gs)}${box(120,72,320,44,'3 · Đạo đức','sống tốt, không gây hại',C.goc,C.gs)}${box(120,124,320,44,'2 · Thân xa','nghề nghiệp, cần câu',C.bao,C.bs)}${box(120,176,320,44,'1 · Thân gần','tiền, vật chất',C.bao,C.bs)}
+      <path d="M454 24V112M454 24H446M454 112H446" stroke="${C.goc}" fill="none"/><path d="M454 128V216M454 128H446M454 216H446" stroke="${C.bao}" fill="none"/>
+      ${txt(462,72,'GIÁO DỤC',{a:'start',c:C.goc,w:700,s:12})}${txt(462,176,'BÁNH MÌ',{a:'start',c:C.bao,w:700,s:12})}
+      ${txt(108,72,'tâm thức',{a:'end',s:11})}${txt(108,176,'mưu sinh',{a:'end',s:11})}
+      ${txt(280,250,'Bánh mì phải kẹp giáo dục 3 gốc',{c:C.ink,w:700,s:13})}`,'4 cách giúp người')},
+   {n:'B9',t:'4 vòng tròn đào tạo',one:'Làm đúng là đi từ lõi ra; 3 gốc là trục của bánh xe cuộc đời.',
+    pts:['Kiến thức tinh hoa · 4 kỹ năng: tự học, tự rèn, EQ, xây đội ngũ.','Xu hướng tính cách, đam mê, sở trường → sợi chỉ đỏ.','Sứ mệnh = 3 gốc + sợi chỉ đỏ · Tầm nhìn = sứ mệnh × quy mô.'],
+    q:'Dùng vòng ngoài để mưu sinh, vòng trong làm mỏ neo.',
+    d:()=>svg(290,`<circle cx="160" cy="145" r="130" fill="${C.sf}" stroke="${C.line}"/><circle cx="160" cy="145" r="96" fill="${C.ws}" stroke="${C.way}"/><circle cx="160" cy="145" r="62" fill="${C.bs}" stroke="${C.bao}"/><circle cx="160" cy="145" r="30" fill="${C.gs}" stroke="${C.goc}"/>
+      ${txt(160,141,'3 Gốc',{c:C.ink,w:700,s:12})}${txt(160,155,'lõi',{s:10.5})}
+      <path d="M160 30H326M160 64H326M160 98H326M160 130H326" stroke="${C.line}" fill="none" stroke-dasharray="3 3"/>
+      ${txt(332,34,'4 · Kiến thức tinh hoa',{a:'start',c:C.ink,w:600,s:12.5})}${txt(332,68,'3 · Kỹ năng: tự học, tự rèn…',{a:'start',c:C.ink,w:600,s:12.5})}${txt(332,102,'2 · Tính cách, đam mê, sở trường',{a:'start',c:C.ink,w:600,s:12.5})}${txt(332,134,'1 · Nhân cách cốt lõi',{a:'start',c:C.goc,w:700,s:12.5})}
+      ${txt(332,190,'Bánh xe cuộc đời thiếu trục',{a:'start',s:11.5})}${txt(332,206,'= cú lừa: tròn vỏ vẫn khổ',{a:'start',s:11.5})}
+      ${txt(332,240,'Tầm nhìn = Sứ mệnh × Quy mô',{a:'start',c:C.ink,s:12})}`,'4 vòng tròn')},
+   {n:'B10',t:'Bát Chánh Đạo – 8 chìa khóa vạn năng',one:'8 chi gom lại thành 3 gốc; chánh kiến dẫn đường, chánh niệm là vua tu tập.',
+    pts:['Trí sáng suốt: chánh kiến, chánh tư duy.','Sống cống hiến: chánh ngữ, chánh nghiệp, chánh mạng.','Tâm vững vàng: chánh tinh tấn, chánh niệm, chánh định.'],
+    q:'Thiền nhiều vẫn sân si là có định mà thiếu niệm.',
+    d:()=>svg(260,`${box(20,20,160,40,'Trí tuệ','',C.goc,C.gs)}${box(200,20,160,40,'Đạo đức','',C.goc,C.gs)}${box(380,20,160,40,'Nghị lực','',C.goc,C.gs)}
+      ${box(20,80,160,36,'Chánh kiến','',C.way)}${box(20,124,160,36,'Chánh tư duy','',C.line)}
+      ${box(200,80,160,36,'Chánh ngữ','',C.line)}${box(200,124,160,36,'Chánh nghiệp','',C.line)}${box(200,168,160,36,'Chánh mạng','',C.line)}
+      ${box(380,80,160,36,'Chánh tinh tấn','',C.line)}${box(380,124,160,36,'Chánh niệm','',C.way)}${box(380,168,160,36,'Chánh định','',C.line)}
+      ${txt(100,190,'vua của 8 chánh ↑',{s:11,c:C.way})}${txt(460,226,'↑ vua của tu tập',{s:11,c:C.way})}
+      ${txt(280,246,'8 chi tương sinh theo vòng xoắn ốc đi lên',{s:12,c:C.ink})}`,'Bát Chánh Đạo')},
+   {n:'B11',t:'Tứ Diệu Đế · Như lý tác ý · Nghiệp',one:'Hai cặp nhân quả: Tập ⇒ Khổ, Đạo ⇒ Diệt.',
+    pts:['Khổ là không hài lòng; nguyên nhân là mong cầu như ý của chính mình.','Tạo phước (đất) + như lý tác ý (hạt) + cam kết lâu dài = chuyển nghiệp.','4 Lời hứa từ tâm: nói ít, phản ứng ít, soi người ít, đòi hỏi ít.'],
+    q:'Thấy đúng trọn vẹn chừng nào, buông xả và làm đúng chừng đó.',
+    d:()=>svg(270,`${txt(140,22,'NHÂN',{w:700,s:12})}${txt(420,22,'QUẢ',{w:700,s:12})}
+      ${box(30,34,220,70,'Tập đế','mong cầu, dính mắc',C.doc,C.ds)}${box(310,34,220,70,'Khổ đế','bất như ý',C.doc,C.ds)}${arr('M250 69H306',C.doc)}
+      ${box(30,128,220,70,'Đạo đế','Bát Chánh Đạo',C.goc,C.gs)}${box(310,128,220,70,'Diệt đế','bình an, vô ngã',C.goc,C.gs)}${arr('M250 163H306',C.goc)}
+      ${txt(280,230,'Vấn đề → Nguyên nhân → Đích đến → Giải pháp',{c:C.ink,s:12.5})}${txt(280,252,'Khổ đế đứng đầu: phải khổ đủ lớn mới giúp được',{s:11.5})}`,'Tứ Diệu Đế')},
+   {n:'B12',t:'Bế giảng – Sống cùng Chánh Kiến',one:'Gom cả khóa thành một tiến trình đúc kết và sống cả đời.',
+    pts:['Tâm thế mang theo: khiêm hạ và cầu thị, nhận lỗi sửa mình, chủ động gieo nhân mới.','Văn–Tư–Tu đều đặn xen những đợt áp suất mạnh.','Đừng vội tin cả công cụ tâm lý, huyền học: soi tất cả bằng nhân quả.'],
+    q:'Hãy sống và lan tỏa điều tử tế.',
+    d:()=>svg(250,`${box(10,20,128,52,'Dấu ấn lớn','',C.line)}${box(150,20,128,52,'Soi bằng','3 gốc – 3 độc',C.way,C.ws)}${box(290,20,128,52,'Thấy hạt giống','trong tâm',C.way,C.ws)}${box(430,20,120,52,'Hiểu mình','bài học đời',C.line)}
+      ${arr('M138 46H146')}${arr('M278 46H286')}${arr('M418 46H426')}${arr('M490 72V108')}
+      ${box(430,112,120,52,'Lẽ sống','Tam Bảo, rèn gốc',C.goc,C.gs)}${box(290,112,128,52,'Nội lực','nâng tầm',C.goc,C.gs)}${box(150,112,128,52,'Sợi chỉ đỏ','sứ mệnh',C.goc,C.gs)}${box(10,112,128,52,'Cống hiến','sống trọn vẹn',C.goc,C.gs)}
+      ${arr('M430 138H422')}${arr('M290 138H282')}${arr('M150 138H142')}
+      ${txt(280,206,'Cột mốc đúc kết cuộc đời',{c:C.ink,w:700,s:13})}`,'Đúc kết cuộc đời')}
+  ];
+  const pick=document.getElementById('pick'),out=document.getElementById('lesson');
+  function render(i){
+    [...pick.children].forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+    const l=L[i];
+    out.innerHTML=`<div class="fig">${l.d()}</div><div><h3>${l.n} · ${esc(l.t)}</h3><p class="one">${esc(l.one)}</p><ul>${l.pts.map(p=>'<li>'+esc(p)+'</li>').join('')}</ul><div class="quote">${esc(l.q)}</div></div>`;
+    try{localStorage.setItem('ck3h-lesson',i)}catch(e){}
+  }
+  L.forEach((l,i)=>{const b=document.createElement('button');b.type='button';b.textContent=l.n;b.title=l.t;b.addEventListener('click',()=>render(i));pick.appendChild(b)});
+  let li=0;try{const v=parseInt(localStorage.getItem('ck3h-lesson'),10);if(v>=0&&v<12)li=v}catch(e){}
+  render(li);
+
+  // mind map
+  (function(){
+    const M=[
+     ['B1','Tâm thế','var(--way)','var(--way-soft)',['Khiêm hạ – biết ơn','Nhận lỗi – sửa mình','Chủ động gieo nhân mới','Học thật: Văn 10 · Tư 20 · Tu 70']],
+     ['B2','Tư duy nhân quả','var(--way)','var(--way-soft)',['Đừng vội tin (kinh Kalama)','Sự thật khác suy diễn','Tư duy vua: xuôi và ngược','Ý nghĩa = rèn mình + cống hiến']],
+     ['B3','Tam Bảo','var(--bao)','var(--bao-soft)',['Thầy hiền trí: trao bản đồ','Sách tinh hoa: mỗi ngày','Bạn tốt: giữ thói quen','Môi trường mạnh hơn ý chí']],
+     ['B4','3 Độc','var(--doc)','var(--doc-soft)',['Si → Tham → Sân / Sợ → Khổ','Tâm quan sát là vua tu tập','Dừng 10 giây khi giận','Làm mới tình thương (8 câu)']],
+     ['B5','3 Gốc','var(--goc)','var(--goc-soft)',['Trí tuệ: nhân quả + giải pháp','Nghị lực: Dũng · Nhẫn · Tĩnh','Đạo đức: Từ · Bi · Hỷ · Xả','Thiếu một gốc là hỏng người']],
+     ['B6','Kỹ năng vua','var(--way)','var(--way-soft)',['Quan sát đa chiều','Phân tích nhân – duyên – quả','Đúc kết lõi rồi mới quyết','Nhật ký 3 dòng mỗi tối']],
+     ['B7','Thân – Tâm','var(--doc)','var(--doc-soft)',['Tam giác đỏ ↔ tam giác xanh','Cái tôi và cái của tôi','Thành công → cái tôi lớn','Chánh niệm → cái tôi nhỏ']],
+     ['B8','Giúp người','var(--goc)','var(--goc-soft)',['Bánh mì kẹp giáo dục','Ưu tiên người ảnh hưởng mạnh','Tốt lên trước, rồi 9 cách độ','Đừng soi lỗi người thân']],
+     ['B9','4 vòng tròn','var(--bao)','var(--bao-soft)',['Kiến thức tinh hoa','Tự học · tự rèn · EQ · đội ngũ','Tính cách · đam mê · sở trường','Lõi 3 gốc = trục bánh xe']],
+     ['B10','Bát Chánh Đạo','var(--goc)','var(--goc-soft)',['Trí: kiến · tư duy','Đức: ngữ · nghiệp · mạng','Lực: tinh tấn · niệm · định','Kiến là vua; niệm vua tu tập']],
+     ['B11','Tứ Diệu Đế','var(--doc)','var(--doc-soft)',['Tập (mong cầu) ⇒ Khổ','Đạo (8 chánh) ⇒ Diệt','Tạo phước + như lý tác ý','4 Lời hứa từ tâm']],
+     ['B12','Bế giảng','var(--way)','var(--way-soft)',['Cột mốc đúc kết cuộc đời','Sợi chỉ đỏ · sứ mệnh','Đừng vội tin mọi công cụ','Sống và lan tỏa điều tử tế']]
+    ];
+    const cx=620,cy=430,ys=[70,210,350,490,630,770];
+    let g='';
+    M.forEach((b,i)=>{
+      const right=i<6, y=ys[right?i:11-i];
+      const bx=right?790:280, bw=170, ex=right?bx:bx+bw, sx=right?cx+100:cx-100;
+      g+=`<path d="M${sx} ${cy}C${(sx+ex)/2} ${cy} ${(sx+ex)/2} ${y} ${ex} ${y}" fill="none" stroke="${b[2]}" stroke-width="2"/>`;
+      g+=`<rect x="${bx}" y="${y-22}" width="${bw}" height="44" rx="22" fill="${b[3]}" stroke="${b[2]}" stroke-width="1.6"/>`;
+      g+=`<text x="${bx+bw/2}" y="${y+5}" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">${b[0]} · ${esc(b[1])}</text>`;
+      b[4].forEach((l,k)=>{
+        const ly=y-30+k*20, x0=right?bx+bw:bx, x1=right?x0+22:x0-22;
+        g+=`<path d="M${x0} ${y}C${(x0+x1)/2} ${y} ${(x0+x1)/2} ${ly} ${x1} ${ly}" fill="none" stroke="${b[2]}" stroke-width="1" opacity=".7"/>`;
+        g+=`<circle cx="${x1}" cy="${ly}" r="2.5" fill="${b[2]}"/>`;
+        g+=`<text x="${right?x1+8:x1-8}" y="${ly+4}" text-anchor="${right?'start':'end'}" font-size="13" fill="var(--ink)">${esc(l)}</text>`;
+      });
+    });
+    g+=`<rect x="${cx-100}" y="${cy-44}" width="200" height="88" rx="14" fill="var(--ink)"/>`;
+    g+=`<text x="${cx}" y="${cy-12}" text-anchor="middle" font-size="16" font-weight="700" fill="var(--bg)" font-family="var(--font-display)">Chánh Kiến</text>`;
+    g+=`<text x="${cx}" y="${cy+10}" text-anchor="middle" font-size="12.5" fill="var(--bg)">Học – Hiểu – Hành</text>`;
+    g+=`<text x="${cx}" y="${cy+30}" text-anchor="middle" font-size="11.5" fill="var(--bg)" opacity=".8">sự thật trên nhân quả</text>`;
+    g+=`<text x="1080" y="852" text-anchor="middle" font-size="11.5" fill="var(--muted)">nền tảng · bản đồ tâm</text><text x="160" y="852" text-anchor="middle" font-size="11.5" fill="var(--muted)">ứng dụng · chánh pháp</text>`;
+    document.getElementById('mindfig').innerHTML=`<svg viewBox="0 0 1240 868" role="img" aria-label="Sơ đồ tư duy 12 bài">${g}</svg>`;
+  })();
+})();
+</script>
+
+</body>
+</html>
