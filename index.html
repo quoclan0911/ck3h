@@ -83,6 +83,89 @@ td.k{font-weight:700}
 .why div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .why b{display:block;margin-bottom:2px}
 @media (prefers-reduced-motion:no-preference){.node rect{transition:stroke-width .15s}}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:stretch}
+.search{flex:1 1 260px;position:relative}
+.search input{width:100%;font:15px var(--font-body);padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.search input:focus-visible,.btn:focus-visible,.bl:focus-visible{outline:2px solid var(--way);outline-offset:2px}
+.btn{font:600 13.5px var(--font-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 12px;cursor:pointer}
+.btn.sm{font-size:13px;padding:6px 10px;border-radius:8px}
+.btn.good{border-color:var(--goc);color:var(--goc)}
+.results{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--surface);border:1px solid var(--line);border-radius:10px;max-height:60vh;overflow:auto;z-index:20;box-shadow:0 10px 28px rgba(0,0,0,.2)}
+.results .rc{margin:0;padding:8px 12px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+.results button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:9px 12px;color:var(--ink);font:14px/1.45 var(--font-body);cursor:pointer}
+.results button:hover,.results button:focus-visible{background:var(--bg)}
+.results small{display:block;color:var(--way);font-size:11.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+.results b{display:block}.results span{display:block;color:var(--muted);font-size:13px}
+mark{background:var(--bao-soft);color:inherit;border-radius:3px;padding:0 1px}
+.bl{color:var(--way);cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
+svg tspan.bl{fill:var(--way);text-decoration:underline;cursor:pointer}
+.cards{display:grid;gap:10px}
+.cards.two{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card h3{font-family:var(--font-display);font-size:18px;margin:0 0 6px}
+.card p{margin:4px 0}
+.card small{color:var(--muted)}
+.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--way)}100%{box-shadow:0 0 0 0 transparent}}
+.qa .qh{display:flex;gap:8px;align-items:center}
+.tagb{font:700 12px var(--font-body);color:var(--way)}
+.ok{font-size:12px;color:var(--goc);font-weight:600}
+.qq{font-weight:600}
+.qa .ans{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.qa.known{border-color:var(--goc)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.qbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:0 0 12px;font-size:14px}
+.qbar label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+#qstat{font-weight:700}
+.term b{font-family:var(--font-display);font-size:16.5px}
+.scen summary{cursor:pointer}
+.scen ol{margin:10px 0 2px;padding-left:20px}
+.scen li{margin-bottom:6px}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.chk:last-child{border-bottom:0}
+.chk input{width:18px;height:18px;margin-top:3px;accent-color:var(--goc);flex:0 0 auto}
+.chk input:checked+span{color:var(--muted);text-decoration:line-through}
+.chk small{margin-left:4px}
+.dhead{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;margin-bottom:12px}
+#dcount{font-weight:700;font-size:16px}
+#dweek{display:flex;gap:6px;align-items:flex-end}
+.day{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:var(--muted)}
+.day i{display:block;width:16px;height:36px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
+.day i{background:linear-gradient(to top,var(--goc) var(--h,0%),var(--line) var(--h,0%))}
+.day em{font-style:normal}
+#mytacy{width:100%;min-height:84px;font:15px/1.5 var(--font-body);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);resize:vertical}
+.src{margin-top:12px;font-size:13.5px;color:var(--muted)}
+.src summary{cursor:pointer;font-weight:600;color:var(--ink)}
+.src ul{margin:6px 0;padding-left:18px}
+.src p{margin:4px 0;font-size:12.5px}
+.zoombtn{display:none;margin-top:8px}
+@media (min-width:900px){nav{flex-wrap:wrap}}
+.sh{font-family:var(--font-display);font-size:20px;margin:26px 0 10px}
+.maplist{display:none;margin-top:16px}
+.maplist h3{font-family:var(--font-display);font-size:18px;margin:0 0 8px}
+.maplist .card{margin-bottom:8px}
+.maplist summary{cursor:pointer;font-weight:600}
+.zov{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column}
+.zbar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.zin{flex:1;overflow:auto;padding:12px}
+.zin svg{display:block;width:1000px;max-width:none;height:auto;min-width:0}
+.zin svg text{font-family:var(--font-body)}
+@media (max-width:640px){.fig svg,.lesson .fig svg,.fig.mind svg{min-width:0}.fig{padding:8px}.zoombtn{display:inline-block}.maplist{display:block}}
+#printsheet{display:none}
+@media print{
+ @page{size:A4;margin:9mm}
+ body.printing{background:#fff;color:#000}
+ body.printing .wrap{display:none}
+ body.printing #printsheet{display:block;font:8.6pt/1.32 var(--font-body);color:#000}
+ #printsheet h1{font:700 14pt var(--font-display);margin:0 0 5pt}
+ #printsheet .pcols{columns:2;column-gap:12pt}
+ #printsheet .pl{break-inside:avoid;margin:0 0 5pt}
+ #printsheet .pl p{margin:1pt 0}
+ #printsheet ul{margin:1pt 0;padding-left:11pt}
+ #printsheet .pq{font-style:italic;color:#333}
+ #printsheet .pfoot{border-top:1px solid #999;margin-top:4pt;padding-top:4pt}
+ #printsheet .pfoot div{margin-bottom:2pt}
+}
 </style>
 </head>
 <body>
@@ -114,6 +197,10 @@ td.k{font-weight:700}
       <li><b>B12</b> Bài 12 · Bế giảng – Sống cùng Chánh Kiến</li>
     </ol>
   </details>
+  <div class="tools">
+    <div class="search"><input id="q" type="search" placeholder="Tìm trong cả trang, ví dụ: tác ý, Vipassana, suy diễn…" aria-label="Tìm kiếm" autocomplete="off"><div class="results" id="qres" hidden></div></div>
+    <button type="button" class="btn" id="printbtn">In / lưu PDF bản tóm tắt</button>
+  </div>
 </header>
 
 <nav role="tablist" aria-label="Các sơ đồ">
@@ -202,6 +289,7 @@ td.k{font-weight:700}
   </svg>
   </div>
   <div class="detail" id="detail" aria-live="polite"><b>Bấm vào một khối</b>Chi tiết và bài liên quan sẽ hiện ở đây.</div>
+  <div class="maplist" id="maplist"></div>
 </section>
 
 <!-- 2 PATH -->
@@ -377,6 +465,8 @@ td.k{font-weight:700}
   <p class="lead">Lưu đồ này ghép các công cụ rải rác trong khóa thành một quy trình dùng được ngay trong ngày. Nhãn nhỏ ở góc mỗi bước cho biết công cụ đến từ bài nào.</p>
   <div class="fig flow"><svg viewBox="0 0 900 1144" role="img" aria-label="Lưu đồ xử lý một chuyện bất như ý"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs><rect x="250" y="20" width="400" height="56" rx="28" fill="var(--doc-soft)" stroke="var(--doc)" stroke-width="1.4"/><text x="450" y="45" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)">Chuyện bất như ý xảy ra</text><text x="450" y="64" text-anchor="middle" font-size="12" fill="var(--muted)">một câu nói, một hành vi, một hoàn cảnh</text><rect x="250" y="100" width="400" height="70" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="266" y="126" font-size="14" font-weight="700" fill="var(--ink)">1 · DỪNG LẠI 10 GIÂY</text><text x="636" y="126" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B4</text><text x="266" y="148" font-size="12.5" fill="var(--muted)">Đèn đỏ: hít thở, quay vào trong lồng ngực</text><polygon points="340,232 450,192 560,232 450,272" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.4"/><text x="450" y="229" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Cảm xúc còn</text><text x="450" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">trào dâng?</text><rect x="690" y="196" width="190" height="72" rx="9" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.4"/><text x="706" y="222" font-size="14" font-weight="700" fill="var(--ink)">Rời chỗ 10 phút</text><text x="706" y="244" font-size="12.5" fill="var(--muted)">uống nước, đi bộ,</text><text x="706" y="262" font-size="12.5" fill="var(--muted)">đọc tác ý "Dịu dàng"</text><rect x="250" y="300" width="400" height="100" rx="9" fill="var(--doc-soft)" stroke="var(--doc)" stroke-width="1.4"/><text x="266" y="326" font-size="14" font-weight="700" fill="var(--ink)">2 · GỌI TÊN TÂM ĐANG VẬN HÀNH</text><text x="636" y="326" text-anchor="end" font-size="11" font-weight="600" fill="var(--doc)">B4 · B6</text><text x="266" y="348" font-size="12.5" fill="var(--muted)">Tham: mình đang muốn như ý điều gì?</text><text x="266" y="366" font-size="12.5" fill="var(--muted)">Sân / Sợ: mình muốn đẩy ra hay né tránh?</text><text x="266" y="384" font-size="12.5" fill="var(--muted)">Si: mình đang chưa thấy điều gì?</text><rect x="250" y="424" width="400" height="82" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="266" y="450" font-size="14" font-weight="700" fill="var(--ink)">3 · TÁCH SỰ THẬT KHỎI SUY DIỄN</text><text x="636" y="450" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B2</text><text x="266" y="472" font-size="12.5" fill="var(--muted)">"Tôi suy diễn là… nhưng sự thật là…"</text><text x="266" y="490" font-size="12.5" fill="var(--muted)">Dưới suy diễn đang có mong cầu nào?</text><rect x="250" y="530" width="400" height="100" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="266" y="556" font-size="14" font-weight="700" fill="var(--ink)">4 · SOI NHÂN – DUYÊN – QUẢ</text><text x="636" y="556" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B6 · B11</text><text x="266" y="578" font-size="12.5" fill="var(--muted)">Nhân: phần của mình ("Tôi là nhân")</text><text x="266" y="596" font-size="12.5" fill="var(--muted)">Duyên: hoàn cảnh, người khác</text><text x="266" y="614" font-size="12.5" fill="var(--muted)">Khổ = không hài lòng; gốc là mong cầu</text><polygon points="340,692 450,652 560,692 450,732" fill="var(--surface)" stroke="var(--muted)" stroke-width="1.4"/><text x="450" y="697" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Việc tiếp theo?</text><rect x="20" y="764" width="260" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="36" y="790" font-size="14" font-weight="700" fill="var(--ink)">Nhận lỗi, làm mới tình thương</text><text x="36" y="812" font-size="12.5" fill="var(--muted)">8 câu, xin lỗi chân thành</text><text x="36" y="830" font-size="12.5" fill="var(--muted)">"soi rõ lỗi mình, chấp nhận lỗi người"</text><rect x="320" y="764" width="260" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="336" y="790" font-size="14" font-weight="700" fill="var(--ink)">Giúp đúng cách</text><text x="336" y="812" font-size="12.5" fill="var(--muted)">mình tốt lên trước, làm gương</text><text x="336" y="830" font-size="12.5" fill="var(--muted)">bánh mì kẹp giáo dục, 9 cách độ</text><rect x="620" y="764" width="260" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="636" y="790" font-size="14" font-weight="700" fill="var(--ink)">Buông xả, chấp nhận</text><text x="636" y="812" font-size="12.5" fill="var(--muted)">tâm xả: không dính, không chối</text><text x="636" y="830" font-size="12.5" fill="var(--muted)">hiểu và đón nhận duyên hiện tại</text><text x="150" y="864" text-anchor="middle" font-size="11" font-weight="600" fill="var(--goc)">B4 · B7</text><text x="460" y="864" font-size="11" font-weight="600" fill="var(--goc)">B8</text><text x="750" y="864" text-anchor="middle" font-size="11" font-weight="600" fill="var(--goc)">B5 · B11</text><rect x="230" y="896" width="440" height="82" rx="9" fill="var(--goc-soft)" stroke="var(--goc)" stroke-width="1.4"/><text x="246" y="922" font-size="14" font-weight="700" fill="var(--ink)">5 · GIEO NHÂN MỚI</text><text x="656" y="922" text-anchor="end" font-size="11" font-weight="600" fill="var(--goc)">B6 · B11</text><text x="246" y="944" font-size="12.5" fill="var(--muted)">1 hành động nhỏ, cụ thể, làm ngay hôm nay</text><text x="246" y="962" font-size="12.5" fill="var(--muted)">+ 1 việc phước + 1 câu như lý tác ý</text><rect x="230" y="1002" width="440" height="64" rx="9" fill="var(--way-soft)" stroke="var(--way)" stroke-width="1.4"/><text x="246" y="1028" font-size="14" font-weight="700" fill="var(--ink)">6 · TỐI: NHẬT KÝ 3 DÒNG</text><text x="656" y="1028" text-anchor="end" font-size="11" font-weight="600" fill="var(--way)">B6</text><text x="246" y="1050" font-size="12.5" fill="var(--muted)">Cảnh hôm nay – Tâm mình lúc đó – Nhân mới muốn gieo</text><g fill="none" stroke="var(--muted)" stroke-width="1.3"><path d="M450 76V96" marker-end="url(#fa)"/><path d="M450 170V188" marker-end="url(#fa)"/><path d="M560 232H686" marker-end="url(#fa)"/><path d="M785 196V135H654" marker-end="url(#fa)"/><path d="M450 272V296" marker-end="url(#fa)"/><path d="M450 400V420" marker-end="url(#fa)"/><path d="M450 506V526" marker-end="url(#fa)"/><path d="M450 630V648" marker-end="url(#fa)"/><path d="M340 692H150V760" marker-end="url(#fa)"/><path d="M560 692H750V760" marker-end="url(#fa)"/><path d="M450 732V760" marker-end="url(#fa)"/><path d="M150 872V884H450"/><path d="M750 872V884H450"/><path d="M450 846V892" marker-end="url(#fa)"/><path d="M450 978V998" marker-end="url(#fa)"/></g><text x="620" y="224" text-anchor="middle" font-size="11.5" fill="var(--muted)">còn</text><text x="462" y="290" font-size="11.5" fill="var(--muted)">đã lắng</text><text x="796" y="168" font-size="11.5" fill="var(--muted)">rồi quay lại</text><text x="245" y="684" text-anchor="middle" font-size="11.5" fill="var(--muted)">mình đã làm tổn thương</text><text x="655" y="684" text-anchor="middle" font-size="11.5" fill="var(--muted)">không có gì cần làm</text><text x="458" y="750" font-size="11.5" fill="var(--muted)">họ cần được giúp</text><text x="450" y="1102" text-anchor="middle" font-size="12.5" fill="var(--ink)">Trước khi có chuyện: nói ít lại, lắng nghe nhiều hơn · phản ứng ít lại, quan sát nhiều hơn</text><text x="450" y="1124" text-anchor="middle" font-size="12" fill="var(--muted)">Nhân là Tham – Sân – Si thì Quả là Đau khổ; thấy đúng chừng nào, buông xả chừng đó</text></svg></div>
   <p class="note">Mẹo nhớ: <b>Dừng – Gọi tên – Sự thật – Nhân quả – Gieo nhân – Ghi lại.</b> Ban đầu đi hết 6 bước chậm rãi; tập lâu thì bước 1 đến 4 diễn ra trong vài giây.</p>
+  <h3 class="sh">Tình huống mẫu: đi qua lưu đồ từng bước</h3>
+  <div class="cards" id="scen"></div>
 </section>
 
 <!-- 7 MIND -->
@@ -385,7 +475,9 @@ td.k{font-weight:700}
   <p class="lead">Bên phải là 6 bài đầu (nền tảng và bản đồ tâm), bên trái là 6 bài sau (ứng dụng và chánh pháp). Mỗi nhánh giữ 4 ý cần thuộc. Đọc theo chiều kim đồng hồ từ B1.</p>
   <div class="fig mind" id="mindfig"></div>
 </section>
+
 </div>
+<div id="printsheet"></div>
 
 <script>
 (function(){
@@ -540,6 +632,7 @@ td.k{font-weight:700}
   L.forEach((l,i)=>{const b=document.createElement('button');b.type='button';b.textContent=l.n;b.title=l.t;b.addEventListener('click',()=>render(i));pick.appendChild(b)});
   let li=0;try{const v=parseInt(localStorage.getItem('ck3h-lesson'),10);if(v>=0&&v<12)li=v}catch(e){}
   render(li);
+  window.CK={show,render,L,D};
 
   // mind map
   (function(){
@@ -579,6 +672,171 @@ td.k{font-weight:700}
     g+=`<text x="1080" y="852" text-anchor="middle" font-size="11.5" fill="var(--muted)">nền tảng · bản đồ tâm</text><text x="160" y="852" text-anchor="middle" font-size="11.5" fill="var(--muted)">ứng dụng · chánh pháp</text>`;
     document.getElementById('mindfig').innerHTML=`<svg viewBox="0 0 1240 868" role="img" aria-label="Sơ đồ tư duy 12 bài">${g}</svg>`;
   })();
+})();
+</script>
+<script>
+(function(){
+// ===== DATA: quiz, glossary, scenarios, daily, sources =====
+const QZ={};
+const GL=[];
+const SC=[
+{t:'Bị sếp chê trước cả phòng họp',s:[
+['Dừng','Mặt nóng, muốn cãi ngay: đó là đèn đỏ. Im lặng, hít thở 10 giây, chưa trả lời. (B4)'],
+['Gọi tên tâm','Sân (khó chịu, muốn cãi) và Sợ (mất mặt). Bên dưới là Tham: muốn được khen, muốn giữ hình ảnh. (B4, B7)'],
+['Nhìn sự thật','"Tôi suy diễn là sếp ghét tôi, nhưng sự thật là sếp chỉ ra 2 lỗi số liệu trong báo cáo." (B2)'],
+['Soi nhân quả','Nhân: tôi làm vội, không tự kiểm tra. Nếu cãi lại thì quả là xung đột, mất uy tín. (B6)'],
+['Gieo nhân mới','Cảm ơn góp ý, nhận lỗi, sửa ngay trong ngày. Tác ý: "Cầu cho con thấy rõ lỗi mình, chấp nhận lỗi người." (B1, B4)'],
+['Ghi lại','Cảnh: bị chê. Tâm: sân, sợ mất mặt. Nhân mới: tự soát lỗi trước khi nộp. (B6)']]},
+{t:'Con không chịu học, điểm kém',s:[
+['Dừng','Thấy mình sắp quát: dừng 10 giây, ra ngoài uống nước rồi quay lại. (B4)'],
+['Gọi tên tâm','Sân ở bề mặt; bên dưới là Tham (muốn con giỏi theo ý mình) và Si (không nhìn lại cách mình dạy). (B4)'],
+['Nhìn sự thật','"Tôi suy diễn là con lười, nhưng sự thật là con đã ngồi một tiếng và vướng ở bài khó." (B2)'],
+['Soi nhân quả','Quát mắng thì con sợ và càng ghét học. "Nhìn cây sửa đất – nhìn con sửa mình." (B5, B6)'],
+['Gieo nhân mới','Ngồi cùng con 15 phút, hỏi chỗ vướng, khen nỗ lực. Đòi hỏi ít lại, phụng sự nhiều hơn. (B8, B11)'],
+['Ghi lại','Cảnh: con học kém. Tâm: tham kỳ vọng. Nhân mới: mỗi tối đồng hành với con 15 phút. (B6)']]},
+{t:'Cãi nhau với vợ / chồng vì việc nhà',s:[
+['Dừng','Giọng to dần: dừng lại, nói "Mình nói tiếp sau 10 phút nhé". (B4)'],
+['Gọi tên tâm','Sân (cằn nhằn, chỉ trích), bên dưới là Tham (muốn người kia theo ý mình), dưới nữa là Si (không thấy phần lỗi của mình). (B4)'],
+['Nhìn sự thật','"Tôi suy diễn là anh / em không quan tâm, nhưng sự thật là hôm nay người ấy tăng ca về muộn." (B2)'],
+['Soi nhân quả','Chỉ trích lặp lại thì mất kết nối. Soi người nhiều, sửa mình ít. (B7, B11)'],
+['Gieo nhân mới','Làm một việc phục vụ mà không đòi hỏi; nói lời xin lỗi theo 8 câu "Khép lại quá khứ – làm mới tình thương". (B4, B8)'],
+['Ghi lại','Nhân mới: mỗi ngày một việc phục vụ không đòi hỏi. (B6)']]},
+{t:'Việc dồn, trễ hạn, lo âu',s:[
+['Dừng','Tim đập nhanh, đầu rối: dừng, thở 10 hơi, viết hết việc ra giấy. (B4)'],
+['Gọi tên tâm','Sợ (bất an), bên dưới là Tham: muốn mọi thứ hoàn hảo, muốn được đánh giá cao. (B4, B7)'],
+['Nhìn sự thật','"Tôi suy diễn là mọi thứ hỏng hết, nhưng sự thật là có 3 việc trễ, chỉ 1 việc thật sự gấp." (B2)'],
+['Soi nhân quả','Vấn đề → nguyên nhân (nhận việc quá sức, trì hoãn) → đích đến → giải pháp. (B11)'],
+['Gieo nhân mới','Làm việc gấp nhất trước, báo sớm cho người liên quan. "Biết bỏ bớt cũng là giải pháp." Tận nhân lực, buông xả quả. (B9, B11)'],
+['Ghi lại','Nhân mới: nhận việc vừa sức, chia nhỏ việc lớn. (B6)']]}
+];
+const DL=[];
+const SRC={
+B1:[['Slide coach Bài 1','tr. 4 (Học Thật), 6 (3 tâm thế), 20 (Văn–Tư–Tu)']],
+B2:[['Slide Thầy Quân Bài 2','tr. 7–9 (Đừng vội tin), 12 (Tư duy vua), 13 (cây nhân cách)'],['Slide coach Bài 2','tr. 29–35 (Sự thật & suy diễn), 40 (Tôi là Nhân)'],['Video Thầy Quân Bài 2','Kinh Kalama, 4 lời tuyên thệ']],
+B3:[['Slide Thầy Quân Bài 3','tr. 2–7 (Tam Bảo, tủ sách tinh hoa)'],['Slide coach Bài 3','tr. 13–15 (3 thứ rác), 18 (Môi trường mạnh hơn ý chí), 31 (chọn bạn tốt)'],['Video Thầy Quân Bài 3','tiêu hóa thức ăn của tâm, cách rèn 3 gốc']],
+B4:[['Slide Thầy Quân Bài 4','tr. 2 (3 độc, Sợ), 6–7 (tâm quan sát & tâm tạo tác, xử lý cơn giận)'],['Slide coach Bài 4','tr. 15 (3 bước quan sát tâm), 18–26 (Khép lại quá khứ – làm mới tình thương)']],
+B5:[['Slide Thầy Quân Bài 5','tr. 2–3 (Trí tuệ, Nghị lực, Lincoln), 10–11 (tâm Xả)'],['Slide coach Bài 5','tr. 10 (câu chuyện Già làng, "Nhìn cây sửa đất")'],['Video Thầy Quân Bài 5','tam giác 3 gốc, phước vô lậu']],
+B6:[['Slide Thầy Quân Bài 6','tr. 2–3 (Quan sát – Phân tích – Đúc kết), 4–5 (Văn–Tư–Tu), 9 (lời hứa)'],['Slide coach Bài 6','tr. 8 (DISC), 20 (soi gương), 23 (nhật ký 3 dòng), 30 (5 cấp hiểu – thương)']],
+B7:[['Slide Thầy Quân Bài 7','tr. 2 (sơ đồ Thân–Tâm, đường thành công, Vipassana)'],['Slide coach Bài 7','tr. 9–12 (nhãn dán), 18 (như lý tác ý), 19 (bản ngã → vô ngã)'],['Video Thầy Quân Bài 7','"đường lằn đỏ", lãnh đạo cấp 5']],
+B8:[['Slide Thầy Quân Bài 8','tr. 3–5 (4 cách giúp, bánh mì kẹp giáo dục), 8 (9 cách độ ta độ người)'],['Slide coach Bài 8','tr. 8–9 (mạng lưới xã hội), 11 (Salgado), 22–27 (Sự lôi cuốn thánh thiện)']],
+B9:[['Slide Thầy Quân Bài 9','tr. 2–5 (4 vòng tròn, 4 kỹ năng), 8 (bánh xe cuộc đời), 9 (4 vòng GDP)'],['Slide coach Bài 9','tr. 9–12 (4 nút thắt nghề nghiệp), 19–21 (sợi chỉ đỏ, sứ mệnh)']],
+B10:[['Slide Thầy Quân Bài 10','tr. 2–4 (8 chánh, thiền nhiều vẫn sân si), 5 (dấu hiệu thiếu)'],['Slide coach Bài 10','tr. 3 (Ashoka), 7–9 (Ghi nhận sự chuyển hóa), 17 (3 tư duy)']],
+B11:[['Slide Thầy Quân – Tứ diệu đế','tr. 4–6 (Khổ, Tập), 12 (8 khổ), 18 (cầu Mapo)'],['Slide Thầy Quân – Nghiệp','tr. 5–9 (biệt nghiệp, cộng nghiệp), 16–17 (cận tử nghiệp), 19 (liên hoàn cước chuyển nghiệp)'],['Video Thầy Quân – Như lý tác ý','công thức trổ quả, 4 lời hứa từ tâm, tên tác ý'],['Slide coach Bài 11','tr. 4 (9 cấp độ chuyển hóa), 8 (hiểu sai & đúng Tứ diệu đế)']],
+B12:[['Slide coach Bài 12','tr. 3 (tâm thế), 9 (cột mốc đúc kết cuộc đời), 11 (đừng vội tin), 20–21 (3 con đường, Vipassana)']]
+};
+
+// ===== FEATURES =====
+const CK=window.CK; const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const NB=['B1','B2','B3','B4','B5','B6','B7','B8','B9','B10','B11','B12'];
+
+function goLesson(i){CK.show('t-each');CK.render(i);const nv=document.querySelector('nav');window.scrollTo({top:nv.getBoundingClientRect().top+window.scrollY-2,behavior:'smooth'})}
+function goTab(id,el){CK.show(id);const nv=document.querySelector('nav');setTimeout(()=>{const t=el||document.getElementById(document.getElementById(id).getAttribute('aria-controls'));const y=t.getBoundingClientRect().top+window.scrollY-nv.offsetHeight-8;window.scrollTo({top:y,behavior:'smooth'});if(el){el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1600)}},30)}
+
+// ---- 2. B-label links ----
+const RE=/\bB(1[0-2]|[1-9])\b/g, SVGNS='http://www.w3.org/2000/svg';
+const SKIP='nav,button,input,textarea,script,style,title,.bl,.node,#printsheet,.results,.lesson h3,.zov';
+function linkify(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(n){if(!/\bB(1[0-2]|[1-9])\b/.test(n.nodeValue))return 2;const p=n.parentElement;if(!p||p.closest(SKIP))return 2;return 1}});
+  const list=[];while(w.nextNode())list.push(w.currentNode);
+  list.forEach(n=>{const p=n.parentElement,isSvg=p instanceof SVGElement,s=n.nodeValue,frag=document.createDocumentFragment();let last=0;s.replace(RE,(m,num,idx)=>{if(idx>last)frag.appendChild(document.createTextNode(s.slice(last,idx)));let e;if(isSvg){e=document.createElementNS(SVGNS,'tspan');e.setAttribute('class','bl')}else{e=document.createElement('span');e.className='bl';e.tabIndex=0;e.setAttribute('role','link');e.title='Xem Bài '+num}e.setAttribute('data-b',num);e.textContent=m;frag.appendChild(e);last=idx+m.length});if(last<s.length)frag.appendChild(document.createTextNode(s.slice(last)));p.replaceChild(frag,n)});
+}
+document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('.bl');if(t){e.preventDefault();const z=document.querySelector('.zov');if(z){z.remove();document.body.style.overflow=''}goLesson(+t.getAttribute('data-b')-1)}});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('bl')){e.preventDefault();goLesson(+e.target.getAttribute('data-b')-1)}});
+
+// ---- 9. sources under each lesson ----
+const lessonEl=$('#lesson');
+function addSrc(){if(!lessonEl||lessonEl.querySelector('.src'))return;const b=[...document.querySelectorAll('#pick button')].findIndex(x=>x.getAttribute('aria-pressed')==='true');if(b<0)return;const s=SRC[NB[b]]||[];const host=lessonEl.children[1];if(!host)return;const d=document.createElement('details');d.className='src';d.innerHTML='<summary>Nguồn để đối chiếu</summary><ul>'+s.map(x=>'<li><b>'+esc(x[0])+'</b>: '+esc(x[1])+'</li>').join('')+'</ul><p>Số trang là trang có ý đó trong file PDF của bài, có thể lệch một trang. "Video" là bài giảng YouTube của Thầy Quân.</p>';host.appendChild(d)}
+if(lessonEl){new MutationObserver(addSrc).observe(lessonEl,{childList:true});addSrc()}
+
+// ---- 1. quiz ----
+const QK=LS.get('ck3h-quiz',{});let qF='all',qOnly=false;
+const qPick=$('#qpick'),qList=$('#qlist'),qStat=$('#qstat');
+function qAll(){const a=[];NB.forEach(n=>(QZ[n]||[]).forEach((x,i)=>a.push({id:n+'-'+i,n,q:x[0],a:x[1]})));return a}
+const QA=qAll();
+function qRender(){
+  const known=QA.filter(x=>QK[x.id]===1).length;qStat.textContent='Đã nhớ '+known+' / '+QA.length+' câu';
+  [...qPick.children].forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===qF));
+  const items=QA.filter(x=>(qF==='all'||x.n===qF)&&(!qOnly||QK[x.id]!==1));
+  qList.innerHTML=items.length?items.map(x=>`<div class="card qa${QK[x.id]===1?' known':''}" data-id="${x.id}"><div class="qh"><span class="tagb">${x.n}</span>${QK[x.id]===1?'<span class="ok">Đã nhớ</span>':''}</div><p class="qq">${esc(x.q)}</p><button type="button" class="btn sm" data-act="show">Xem đáp án</button><div class="ans" hidden><p>${esc(x.a)}</p><div class="row"><button type="button" class="btn sm good" data-act="yes">Nhớ rồi</button><button type="button" class="btn sm" data-act="no">Chưa nhớ</button></div></div></div>`).join(''):'<p class="note">Không còn câu nào ở đây. Bạn đã nhớ hết!</p>';
+}
+if(qPick){
+  ['all',...NB].forEach(f=>{const b=document.createElement('button');b.type='button';b.dataset.f=f;b.textContent=f==='all'?'Tất cả':f;b.addEventListener('click',()=>{qF=f;qRender()});qPick.appendChild(b)});
+  qList.addEventListener('click',e=>{const b=e.target.closest('button[data-act]');if(!b)return;const c=b.closest('.card'),id=c.dataset.id,act=b.dataset.act;
+    if(act==='show'){c.querySelector('.ans').hidden=false;b.hidden=true;return}
+    QK[id]=act==='yes'?1:0;LS.set('ck3h-quiz',QK);qRender()});
+  $('#qonly').addEventListener('change',e=>{qOnly=e.target.checked;qRender()});
+  $('#qreset').addEventListener('click',()=>{for(const k in QK)delete QK[k];LS.set('ck3h-quiz',QK);qRender()});
+  $('#qshuf').addEventListener('click',()=>{for(let i=QA.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[QA[i],QA[j]]=[QA[j],QA[i]]}qRender()});
+  qRender();
+}
+
+// ---- 3. glossary ----
+const gEl=$('#glist');
+if(gEl){gEl.innerHTML=GL.slice().sort((a,b)=>a[0].localeCompare(b[0],'vi')).map((g,i)=>`<div class="card term" id="term-${GL.indexOf(g)}"><b>${esc(g[0])}</b><p>${esc(g[1])}</p><small>Bài: ${esc(g[2])}</small></div>`).join('')}
+
+// ---- 5. scenarios ----
+const sEl=$('#scen');
+if(sEl){sEl.innerHTML=SC.map((c,i)=>`<details class="card scen" id="scen-${i}"${i===0?' open':''}><summary><b>Tình huống ${i+1}:</b> ${esc(c.t)}</summary><ol>${c.s.map(x=>`<li><b>${esc(x[0])}.</b> ${esc(x[1])}</li>`).join('')}</ol></details>`).join('')}
+
+// ---- 4. daily checklist ----
+const dEl=$('#daily');
+function dkey(d){return 'ck3h-daily-'+d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+const DTOTAL=DL.reduce((s,g)=>s+g[1].length,0);
+function dRender(){
+  const today=new Date(),st=LS.get(dkey(today),[]);
+  let k=0;dEl.innerHTML=DL.map(g=>`<div class="card"><h3>${g[0]}</h3>${g[1].map(it=>{const id=k++;return `<label class="chk"><input type="checkbox" data-i="${id}"${st.includes(id)?' checked':''}><span>${esc(it[0])} <small>${esc(it[1])}</small></span></label>`}).join('')}</div>`).join('');
+  $('#dcount').textContent='Hôm nay: '+st.length+' / '+DTOTAL;
+  const wk=[];for(let i=6;i>=0;i--){const d=new Date(today);d.setDate(d.getDate()-i);const n=LS.get(dkey(d),[]).length;wk.push(`<span class="day" title="${d.getDate()}/${d.getMonth()+1}: ${n}/${DTOTAL}"><i style="--h:${Math.round(n/DTOTAL*100)}%"></i><em>${['CN','T2','T3','T4','T5','T6','T7'][d.getDay()]}</em></span>`)}
+  $('#dweek').innerHTML=wk.join('');
+}
+if(dEl){
+  dEl.addEventListener('change',e=>{const c=e.target;if(!c.matches('input[type=checkbox]'))return;const key=dkey(new Date());let st=LS.get(key,[]);const i=+c.dataset.i;st=c.checked?[...new Set([...st,i])]:st.filter(x=>x!==i);LS.set(key,st);dRender()});
+  const ta=$('#mytacy');ta.value=LS.get('ck3h-tacy','');ta.addEventListener('input',()=>LS.set('ck3h-tacy',ta.value));
+  dRender();
+}
+
+// ---- 8. mobile: map list + zoom ----
+const ml=$('#maplist');
+if(ml){ml.innerHTML='<h3>Các khối trong bản đồ</h3>'+Object.values(CK.D).map(d=>`<details class="card"><summary>${esc(d[0])}</summary><p>${esc(d[1])}</p></details>`).join('')}
+document.querySelectorAll('.panel .fig').forEach(f=>{if(f.closest('#lesson'))return;const b=document.createElement('button');b.type='button';b.className='btn sm zoombtn';b.textContent='Phóng to sơ đồ';b.addEventListener('click',()=>openZoom(f));f.after(b)});
+function openZoom(f){const s=f.querySelector('svg');if(!s)return;const o=document.createElement('div');o.className='zov';o.setAttribute('role','dialog');o.setAttribute('aria-label','Sơ đồ phóng to');o.innerHTML='<div class="zbar"><span>Kéo ngang để xem hết sơ đồ</span><button type="button" class="btn sm">Đóng</button></div><div class="zin"></div>';o.querySelector('.zin').appendChild(s.cloneNode(true));o.querySelector('button').addEventListener('click',()=>{o.remove();document.body.style.overflow=''});document.body.appendChild(o);document.body.style.overflow='hidden'}
+
+// ---- 6. print sheet ----
+function buildPrint(){
+  const P=$('#printsheet');
+  P.innerHTML=`<h1>Chánh Kiến Học Hiểu Hành K32 · Tóm tắt 12 bài</h1><div class="pcols">${CK.L.map(l=>`<div class="pl"><b>Bài ${l.n.slice(1)} · ${esc(l.t)}</b><p>${esc(l.one)}</p><ul>${l.pts.map(p=>'<li>'+esc(p)+'</li>').join('')}</ul><p class="pq">${esc(l.q)}</p></div>`).join('')}</div>
+  <div class="pfoot"><div><b>Gặp chuyện thì làm gì:</b> Dừng 10 giây → Gọi tên tâm (tham, sân, si, sợ) → Nhìn sự thật dưới suy diễn → Soi nhân quả → Gieo nhân mới → Ghi nhật ký 3 dòng.</div><div><b>4 Lời hứa từ tâm:</b> Nói ít lại, lắng nghe nhiều hơn · Phản ứng ít lại, quan sát nhiều hơn · Soi người ít lại, sửa mình nhiều hơn · Đòi hỏi ít lại, phụng sự nhiều hơn.</div><div><b>Công thức:</b> Tam Bảo + Văn–Tư–Tu + khó khăn đủ lớn → 3 Gốc · Ý nghĩa cuộc đời = Rèn mình + Cống hiến · Tạo phước + Như lý tác ý + Giữ cam kết = Chuyển nghiệp.</div></div>`;
+}
+$('#printbtn').addEventListener('click',()=>{buildPrint();document.body.classList.add('printing');setTimeout(()=>{window.print()},50)});
+window.addEventListener('afterprint',()=>document.body.classList.remove('printing'));
+
+// ---- 7. search ----
+const norm=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();
+const IX=[];
+CK.L.forEach((l,i)=>IX.push({k:'Bài',t:l.n+' · '+l.t,x:[l.one,...l.pts,l.q].join(' '),go:()=>goLesson(i)}));
+Object.entries(CK.D).forEach(([key,d])=>IX.push({k:'Bản đồ',t:d[0],x:d[1],go:()=>{CK.show('t-map');const n=document.querySelector('.node[data-k="'+key+'"]');if(n)n.dispatchEvent(new Event('click'));goTab('t-map',$('#detail'))}}));
+if($('#glist'))GL.forEach((g,i)=>IX.push({k:'Thuật ngữ',t:g[0],x:g[1]+' '+g[2],go:()=>goTab('t-terms',document.getElementById('term-'+i))}));
+if(qPick)QA.forEach(q=>IX.push({k:'Tự kiểm tra',t:q.n+' · '+q.q,x:q.a,go:()=>{qF=q.n;qOnly=false;$('#qonly').checked=false;qRender();goTab('t-quiz',document.querySelector('.card[data-id="'+q.id+'"]'))}}));
+SC.forEach((c,i)=>IX.push({k:'Tình huống',t:c.t,x:c.s.map(s=>s.join(' ')).join(' '),go:()=>{const d=document.getElementById('scen-'+i);d.open=true;goTab('t-flow',d)}}));
+if(dEl)DL.forEach(g=>g[1].forEach(it=>IX.push({k:'Thực hành',t:it[0],x:g[0]+' '+it[1],go:()=>goTab('t-daily')})));
+IX.forEach(r=>{r.nt=norm(r.t);r.nx=norm(r.x)});
+function hl(text,q){const n=norm(text),i=n.indexOf(q);if(i<0)return esc(text);return esc(text.slice(0,i))+'<mark>'+esc(text.slice(i,i+q.length))+'</mark>'+esc(text.slice(i+q.length))}
+function snip(text,q){const n=norm(text),i=n.indexOf(q);if(i<0)return esc(text.slice(0,110))+(text.length>110?'…':'');const a=Math.max(0,i-50),b=Math.min(text.length,i+q.length+70);return (a>0?'…':'')+hl(text.slice(a,b),q)+(b<text.length?'…':'')}
+const sIn=$('#q'),sOut=$('#qres');let sItems=[];
+function doSearch(){const q=norm(sIn.value.trim());if(q.length<2){sOut.hidden=true;sOut.innerHTML='';return}
+  sItems=IX.filter(r=>r.nt.includes(q)||r.nx.includes(q)).sort((a,b)=>(b.nt.includes(q)-a.nt.includes(q))).slice(0,30);
+  sOut.innerHTML=sItems.length?'<p class="rc">'+sItems.length+(sItems.length===30?'+':'')+' kết quả</p>'+sItems.map((r,i)=>`<button type="button" data-i="${i}"><small>${r.k}</small><b>${hl(r.t,q)}</b><span>${snip(r.x,q)}</span></button>`).join(''):'<p class="rc">Không tìm thấy "'+esc(sIn.value)+'".</p>';sOut.hidden=false}
+sIn.addEventListener('input',doSearch);sIn.addEventListener('focus',doSearch);
+sOut.addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b)return;const r=sItems[+b.dataset.i];sOut.hidden=true;r.go()});
+document.addEventListener('click',e=>{if(!e.target.closest('.search'))sOut.hidden=true});
+sIn.addEventListener('keydown',e=>{if(e.key==='Escape'){sOut.hidden=true;sIn.blur()}if(e.key==='Enter'&&sItems[0]){sOut.hidden=true;sItems[0].go()}});
+
+// run linkify now and on later renders
+const WR=document.querySelector('.wrap');let lt;linkify(WR);
+new MutationObserver(()=>{clearTimeout(lt);lt=setTimeout(()=>linkify(WR),20)}).observe(WR,{childList:true,subtree:true});
+
 })();
 </script>
 
